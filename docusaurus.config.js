@@ -28,11 +28,11 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-
+  /* 
   presets: [
     [
       "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      /** @type {import('@docusaurus/preset-classic').Options} 
       ({
         docs: {
           routeBasePath: "/", // Serve the docs at the site's root
@@ -50,7 +50,29 @@ const config = {
         },
       }),
     ],
+  ], */
+
+  presets: [
+    [
+      "docusaurus-preset-openapi",
+      /** @type {import('docusaurus-preset-openapi').Options} */
+      {
+        api: {
+          path: "./openapi.yaml",
+          routeBasePath: "wallet-api",
+        },
+        docs: {
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/",
+        },
+        blog: false,
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
   ],
+
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",

@@ -59,7 +59,7 @@ const config = {
       {
         api: {
           path: "./openapi.yaml",
-          routeBasePath: "wallet-api",
+          routeBasePath: "/openapi",
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),

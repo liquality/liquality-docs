@@ -1,178 +1,187 @@
 ---
 openapi: 3.0.0
 info:
-  title: wallet-api
-  description: The Wallet API
+  title: Liquality Wallet API
+  description: A wallet API and SDK provides the necessary tools and resources that crypto companies need to develop their own customized wallet application. It allows them to integrate their wallet into their existing product or platform, giving them the opportunity to securely store, send, and receive digital assets. The SDK simplifies the setup process, provides detailed documentation and tutorials, and offers a secure and robust framework for building custom wallets. This way, crypto companies can create innovative products and services that meet the needs of their customers.
   version: 1.0.0
 servers:
-- url: https://virtserver.swaggerhub.com/ADRINA0002/WalletAPI/1.0.0
-  description: SwaggerHub API Auto Mocking
+  - url: https://virtserver.swaggerhub.com/ADRINA0002/WalletAPI/1.0.0
+    description: SwaggerHub API Auto Mocking
 paths:
   /v1/nft/accountNftCollection/{accountId}:
     get:
       tags:
-      - NFT
+        - NFT
       operationId: accountNftCollections
+      description: This function is designed to retrieve the Non-Fungible Token (NFT) details for a specified account. It will take in the accountId as a parameter and return the NFT details associated with that account. This data can then be used to gain insights into the account’s ownership of NFTs, the composition of their NFT collection, and any associated market trends.
       parameters:
-      - name: accountId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: accountId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: accountNftCollections
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NftAsset'
+                $ref: "#/components/schemas/NftAsset"
   /v1/nft/allNftCollections:
     get:
       tags:
-      - NFT
+        - NFT
       operationId: allNftCollections
+      description: This function is designed to get all of the user's Non-Fungible Tokens (NFTs) from the blockchain. It will return an array of objects containing all of the user's tokenized assets. The objects will contain all of the relevant information about each NFT, including the token's name, address, ID, and more. This function provides an easy way to quickly access all of the user's NFTs in one call.
       responses:
         "200":
           description: NftAsset
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NftAsset'
+                $ref: "#/components/schemas/NftAsset"
   /v1/nft/sendNFTTransaction:
     post:
       tags:
-      - NFT
+        - NFT
       operationId: sendNFTTransaction
+      description: This function allows users to easily and securely send a Non-Fungible Token (NFT) to another user. It can be used to transfer ownership of a digital asset such as artwork, music, or a collectible token.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SendNftRequestBody'
+              $ref: "#/components/schemas/SendNftRequestBody"
       responses:
         "200":
           description: successfully registered device
   /v1/nft/mintNFT:
     post:
       tags:
-      - NFT
+        - NFT
       operationId: mintNFT
+      description: This function mints an NFT (Non-Fungible Token). It is a powerful tool for creating unique digital assets that can be traded, sold, and collected securely on the blockchain.  By using this function, users can create their own digital assets and mint them as NFTs. The minted NFTs are cryptographically secured and are guaranteed to be unique, making them perfect for collecting, trading, and selling as digital assets.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MintNftRequestBody'
+              $ref: "#/components/schemas/MintNftRequestBody"
       responses:
         "200":
           description: successfully registered device
   /v1/token/accountsWithBalance/{walletId}:
     get:
       tags:
-      - tokens
+        - tokens
       operationId: accountsWithBalance
+      description: Returns a list of objects of all accounts that currently are holding any balance.
       parameters:
-      - name: walletId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: walletId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: accountsWithBalance
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: "#/components/schemas/Account"
   /v1/token/totalFiatBalance/{walletId}:
     get:
       tags:
-      - tokens
+        - tokens
       operationId: totalFiatBalance
+      description: Returns the total amount of fiat balance in a wallet.
       parameters:
-      - name: walletId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: walletId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: totalFiatBalance
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TotalFiatAmount'
+                $ref: "#/components/schemas/TotalFiatAmount"
   /v1/token/swap:
     post:
       tags:
-      - tokens
+        - tokens
       operationId: swap
+      description: This function facilitates the transfer of tokens between different blockchain networks. It simplifies the process of exchanging tokens, allowing users to quickly and easily switch between different blockchains. The function is secure and reliable, ensuring that token swaps are completed without any issues or delays.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SwapRequestBody'
+              $ref: "#/components/schemas/SwapRequestBody"
       responses:
         "200":
           description: Swap between tokens
   /v1/token/send:
     post:
       tags:
-      - tokens
+        - tokens
       operationId: send
+      description: This function is designed to make sending cryptocurrency incredibly simple and secure. It also provides a range of features such as instant transaction confirmation, low transaction fees, and support for multiple cryptocurrencies.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SendRequestBody'
+              $ref: "#/components/schemas/SendRequestBody"
       responses:
         "200":
           description: Send tokens
   /v1/fee/getSendTxFees/{accountId}/{asset}/{amount}/{customFee}:
     get:
       tags:
-      - fees
+        - fees
       operationId: getSendTxFees
+      description: This function retrieves all transaction fees associated with a send cryptocurrency transaction. It includes the network fee, which is the fee paid to the network for processing the transaction, as well as any additional fees that may be required by the sender or receiver. The function will calculate the total fee for the transaction and return it to the user.
       parameters:
-      - name: accountId
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: asset
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: amount
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: number
-      - name: customFee
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: accountId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: asset
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: amount
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: number
+        - name: customFee
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: getSendTxFees
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SendFees'
+                $ref: "#/components/schemas/SendFees"
 components:
   schemas:
     NftAsset:
@@ -184,9 +193,9 @@ components:
         token_id:
           type: string
         asset_contract:
-          $ref: '#/components/schemas/NftAsset_asset_contract'
+          $ref: "#/components/schemas/NftAsset_asset_contract"
         collection:
-          $ref: '#/components/schemas/NftAsset_collection'
+          $ref: "#/components/schemas/NftAsset_collection"
         id:
           type: number
         description:
@@ -248,9 +257,9 @@ components:
         values:
           type: array
           example:
-          - 1
-          - 5
-          - 7
+            - 1
+            - 5
+            - 7
           items:
             type: number
         fee:

@@ -37,7 +37,7 @@ paths:
   /v1/nft/accountNftCollection/{accountId}:
     get:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: accountNftCollections
       description: This function is designed to retrieve the Non-Fungible Token (NFT) details for a specified account. It will take in the accountId as a parameter and return the NFT details associated with that account. This data can then be used to gain insights into the account’s ownership of NFTs, the composition of their NFT collection, and any associated market trends.
       parameters:
@@ -58,7 +58,7 @@ paths:
   /v1/nft/allNftCollections:
     get:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: allNftCollections
       description: This function is designed to get all of the user's Non-Fungible Tokens (NFTs) from the blockchain. It will return an array of objects containing all of the user's tokenized assets. The objects will contain all of the relevant information about each NFT, including the token's name, address, ID, and more. This function provides an easy way to quickly access all of the user's NFTs in one call.
       responses:
@@ -71,7 +71,7 @@ paths:
   /v1/nft/sendNFTTransaction:
     post:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: sendNFTTransaction
       description: This function allows users to easily and securely send a Non-Fungible Token (NFT) to another user. It can be used to transfer ownership of a digital asset such as artwork, music, or a collectible token.
       requestBody:
@@ -85,7 +85,7 @@ paths:
   /v1/nft/mintNFT:
     post:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: mintNFT
       description: This function mints an NFT (Non-Fungible Token). It is a powerful tool for creating unique digital assets that can be traded, sold, and collected securely on the blockchain.  By using this function, users can create their own digital assets and mint them as NFTs. The minted NFTs are cryptographically secured and are guaranteed to be unique, making them perfect for collecting, trading, and selling as digital assets.
       requestBody:
@@ -99,7 +99,7 @@ paths:
   /v1/token/accountsWithBalance/{walletId}:
     get:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: accountsWithBalance
       description: Returns a list of objects of all accounts that currently are holding any balance.
       parameters:
@@ -120,7 +120,7 @@ paths:
   /v1/token/totalFiatBalance/{walletId}:
     get:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: totalFiatBalance
       description: Returns the total amount of fiat balance in a wallet.
       parameters:
@@ -141,7 +141,7 @@ paths:
   /v1/token/swap:
     post:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: swap
       description: This function facilitates the transfer of tokens between different blockchain networks. It simplifies the process of exchanging tokens, allowing users to quickly and easily switch between different blockchains. The function is secure and reliable, ensuring that token swaps are completed without any issues or delays.
       requestBody:
@@ -155,7 +155,7 @@ paths:
   /v1/token/send:
     post:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: send
       description: This function is designed to make sending cryptocurrency incredibly simple and secure. It also provides a range of features such as instant transaction confirmation, low transaction fees, and support for multiple cryptocurrencies.
       requestBody:
@@ -169,7 +169,7 @@ paths:
   /v1/fee/getSendTxFees/{accountId}/{asset}/{amount}/{customFee}:
     get:
       tags:
-        - Wallet API
+        - Wallet API Endpoints
       operationId: getSendTxFees
       description: This function retrieves all transaction fees associated with a send cryptocurrency transaction. It includes the network fee, which is the fee paid to the network for processing the transaction, as well as any additional fees that may be required by the sender or receiver. The function will calculate the total fee for the transaction and return it to the user.
       parameters:
@@ -208,13 +208,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SendFees"
-  /:
-    post:
-      tags:
-        - SDK
-      operationId: SDK
-      description: This function is designed to make sending cryptocurrency incredibly simple and secure. It also provides a range of features such as instant transaction confirmation, low transaction fees, and support for multiple cryptocurrencies.
-
 components:
   schemas:
     NftAsset:

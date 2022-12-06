@@ -58,8 +58,8 @@ const config = {
       /** @type {import('docusaurus-preset-openapi').Options} */
       {
         api: {
-          path: "./openapi.yaml",
-          routeBasePath: "/openapi",
+          path: "openapi.yaml",
+          routeBasePath: "/walletapi",
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),

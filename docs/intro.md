@@ -1,9 +1,11 @@
 ---
 sidebar_position: 1
+displayed_sidebar: mySidebar
+
 slug: /
 ---
 
-# Intro
+# Introduction
 
 Our goal is to allow developers to easily integrate with wallets, where the wallet becomes as invisible as possible to the user but remains non custodial if/when the user requires full control.
 

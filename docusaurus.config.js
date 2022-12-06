@@ -63,7 +63,9 @@ const config = {
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          routeBasePath: "/",
+          routeBasePath: "/", // Serve the docs at the site's root
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: false,
         theme: {

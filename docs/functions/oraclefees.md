@@ -10,7 +10,9 @@ In regard to blockchain, some of the fees can be calculated as average speed/fee
 
 Available funds need to cover all fees to meet the precondition to start initiating a transaction; otherwise, validation/error handling will be triggered if not an alternative option to pay gas fees is provided.
 
-## Get fees for send txn (token or NFT)
+## getSendTxFees
+
+(token or NFT)
 
 In relation to the network, it will provide presets (slow, average, fast), and an additional option to customize it. The default speed/fee can be defined, e.g. average.
 
@@ -24,7 +26,7 @@ The fees can be shown with the amount of the necessary gas token, and/or FIAT.
 await getSendTxFees(accountId: AccountId, asset: Asset, amount?: BN, customFee?: FeeType)
 ```
 
-## Get fees for swap txn
+## getSwapTxFees
 
 This function will return the total amount of fees plus any additional fees set by the provider for a swap transaction. The fees will be retrieved from the rates provided by the providers, protocols, or bridges.
 
@@ -37,7 +39,9 @@ The fees can be shown with the amount of the necessary gas token, and/or FIAT.
 await getSwapTxFees(fromAsset: string, toAsset: string, amount?: BN, customFee?: FeeType)
 ```
 
-## Speed-up swap transactions
+## updateTransactionFee
+
+Speed-up swap transactions
 
 If enabled the user is able to speed up defined transactions before any or a certain amount of confirmations hit the blockchain. The new speed/fee needs to be higher and will replace the previously chosen one.
 
@@ -52,7 +56,7 @@ await updateTransactionFee({
 });
 ```
 
-## Get Quotes
+## getQuotes
 
 Retrieve quotes that correspond to the passed in asset parameters
 

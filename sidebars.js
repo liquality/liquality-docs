@@ -80,6 +80,32 @@ module.exports = {
     },
 
     {
+      type: "category",
+      label: "Examples",
+      items: [
+        {
+          type: "doc",
+          id: "examples/createWallet",
+        },
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Overview",
+      items: [
+        {
+          type: "doc",
+          id: "overview/whatIsWalletApiSdk",
+        },
+        {
+          type: "doc",
+          id: "overview/howDoesItWork",
+        },
+      ],
+    },
+
+    {
       type: "link",
       label: "Wallet API", // The link label
       href: "/walletapi", // The external URL

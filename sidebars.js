@@ -51,7 +51,34 @@ module.exports = {
   mySidebar: [
     // Normal syntax:
     "intro",
-    "concepts/sdk",
+
+    {
+      type: "category",
+      label: "Wallet SDK",
+      items: [
+        {
+          type: "doc",
+          id: "functions/sdk",
+        },
+        {
+          type: "doc",
+          id: "functions/wallet",
+        },
+        {
+          type: "doc",
+          id: "functions/tokens",
+        },
+        {
+          type: "doc",
+          id: "functions/oraclefees",
+        },
+        {
+          type: "doc",
+          id: "functions/collectibles",
+        },
+      ],
+    },
+
     {
       type: "link",
       label: "Wallet API", // The link label

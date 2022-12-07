@@ -5,4 +5,6 @@ displayed_sidebar: mySidebar
 
 # How does it work?
 
+---
+
 (Coming soon)

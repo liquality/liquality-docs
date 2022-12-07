@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Data sources are delivered by providers (Moralis: Ethereum, Polygon, Solana; Covalent 2: Arbitrum). The data provider will deliver the image (otherwise placeholder), NFT name, NFT description, token ID, creator, creator fee, locked, collection description, account address, asset contract, token standard, and the number of copies owned if ERC-1155 is available.
 
+---
+
 ## Recieve
 
 The user will automatically receive the NFTs by injection in regard to the account address provided and then shown in the generalized NFT area (regardless of account), or in the account's first position. The detection of the NFTs happens automatically.

@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Tokens/Balances
 
+---
+
 ## updateBalances
 
 ```javascript

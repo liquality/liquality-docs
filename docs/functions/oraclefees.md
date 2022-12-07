@@ -76,12 +76,29 @@ await getPrices(baseCurrencies: string[], toCurrency: string)
 await getCurrenciesInfo(baseCurrencies: string[]):
 ```
 
-## Update fees for asset
+## updateFees
 
 ```javascript
 await wallet.dispatch.updateFees({
   asset: "AVAX",
 });
+```
+
+## updateMarketData
+
+```javascript
+await updateMarketData({
+  network: activeNetwork,
+});
+```
+
+## updateFiatRates
+
+```javascript
+  await
+    updateFiatRates({
+      assets: wallet.getters.networkAssets as string[],
+    })
 ```
 
 ## Pay fees with FIAT /soon

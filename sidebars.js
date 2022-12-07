@@ -51,6 +51,20 @@ module.exports = {
   mySidebar: [
     // Normal syntax:
     "intro",
+    {
+      type: "category",
+      label: "Overview",
+      items: [
+        {
+          type: "doc",
+          id: "overview/whatIsWalletApiSdk",
+        },
+        {
+          type: "doc",
+          id: "overview/howDoesItWork",
+        },
+      ],
+    },
 
     {
       type: "category",
@@ -86,21 +100,6 @@ module.exports = {
         {
           type: "doc",
           id: "examples/createWallet",
-        },
-      ],
-    },
-
-    {
-      type: "category",
-      label: "Overview",
-      items: [
-        {
-          type: "doc",
-          id: "overview/whatIsWalletApiSdk",
-        },
-        {
-          type: "doc",
-          id: "overview/howDoesItWork",
         },
       ],
     },

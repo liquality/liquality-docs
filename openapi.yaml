@@ -24,11 +24,6 @@ info:
 
        ---
 
-       ## NFT
-
-       The Liquality NFT API can manage collections of standardized NFTs (ERC-721, and ERC-1155) on multiple chains (atm: Ethereum, Polygon, Solana, and Arbitrum). 
-       The user gets easy access to NFTs whether in one place or related to the account, and is able to send, receive, and check stats.
-
   version: 1.0.0
 servers:
   - url: https://virtserver.swaggerhub.com/ADRINA0002/WalletAPI/1.0.0

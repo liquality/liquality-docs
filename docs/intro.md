@@ -31,7 +31,3 @@ customized wallet application. It allows them to integrate their wallet into the
 - Updating a transaction's fees
 
 ---
-
-## NFT
-
-The Liquality NFT API can manage collections of standardized NFTs (ERC-721, and ERC-1155) on multiple chains (atm: Ethereum, Polygon, Solana, and Arbitrum). The user gets easy access to NFTs whether in one place or related to the account, and is able to send, receive, and check stats.

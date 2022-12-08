@@ -54,6 +54,8 @@ module.exports = {
     {
       type: "category",
       label: "Overview",
+      collapsed: false,
+
       items: [
         {
           type: "doc",

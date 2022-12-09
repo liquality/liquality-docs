@@ -5,10 +5,15 @@
  */
 
 /* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+
 :root {
   --ifm-color-primary: #da70ec;
 
   --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'Montserrat';
 
   --ifm-color-primary-dark: #058997;
   --ifm-color-primary-darker: #05818f;

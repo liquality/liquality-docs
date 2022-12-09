@@ -24,6 +24,7 @@ export default function HomePage() {
         <p
           style={{
             fontSize: 40,
+            fontFamily: "Montserrat",
           }}
         >
           web3 Wallet API & SDK

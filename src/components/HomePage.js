@@ -19,17 +19,25 @@ export default function HomePage() {
           flexDirection: "column",
           fontSize: 20,
           padding: 10,
+          width: "40%",
         }}
       >
         <p
           style={{
             fontSize: 40,
             fontFamily: "Montserrat",
+            fontWeight: "800",
+            marginBottom: 10,
+            lineHeight: 1,
           }}
         >
-          web3 Wallet API & SDK
+          Web3 Wallet API & SDK
         </p>
-        <p>
+        <p
+          style={{
+            fontSize: 16,
+          }}
+        >
           A frictionless and immersive solution for games and apps with all the
           web3 benefits, and fully user-owned
         </p>
@@ -38,7 +46,7 @@ export default function HomePage() {
           style={{
             borderRadius: 22,
             background: "#9D4DFA",
-            width: "30%",
+            width: 140,
             padding: 10,
             color: "white",
           }}
@@ -49,7 +57,7 @@ export default function HomePage() {
       </div>
       <div
         style={{
-          width: 600,
+          width: "60%",
           height: 300,
         }}
       ></div>

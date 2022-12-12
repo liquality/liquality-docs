@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Fees/Price Aggregation
+# Fees & Price Aggregation
 
 Fees vary in regard to the type of transaction, blockchain, and/or provider involved.
 

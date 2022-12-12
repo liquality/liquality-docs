@@ -1,5 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
+import IntroLogo from "../../static/img/intro_illustration.svg";
+import AllBlockchains from "../../static/img/all_blockchains.svg";
 
 const listToLoop = [
   {
@@ -84,7 +86,6 @@ export default function HomePage() {
             flexDirection: "column",
             fontSize: 20,
             padding: 10,
-            width: "40%",
           }}
         >
           <p
@@ -120,12 +121,9 @@ export default function HomePage() {
             Learn more
           </a>
         </div>
-        <div
-          style={{
-            width: "60%",
-            height: 300,
-          }}
-        ></div>
+        <div style={{ marginleft: 129 }}>
+          <IntroLogo />
+        </div>
       </div>
       <h1>Wallet SDK</h1>
       <div
@@ -137,6 +135,29 @@ export default function HomePage() {
         }}
       >
         {_renderWalletSdkNavigationRow()}
+      </div>
+      <div
+        style={{
+          width: 879,
+          height: 196,
+          background: "rgba(255, 255, 255, 0.14)",
+          border: "1px solid #000D35",
+          borderRadius: 28,
+          marginTop: 30,
+          padding: 30,
+        }}
+      >
+        {" "}
+        <p
+          style={{
+            fontSize: 13,
+          }}
+        >
+          <b>SUPPORTED BLOCKCHAINS</b>
+          <br></br>
+          <br></br>
+          <AllBlockchains />
+        </p>
       </div>
     </div>
   );

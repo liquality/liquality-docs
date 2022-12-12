@@ -46,7 +46,7 @@ module.exports = {
       ],
     },
 
-    {
+    /*   {
       type: "category",
       label: "Examples",
       items: [
@@ -55,7 +55,7 @@ module.exports = {
           id: "examples/createWallet",
         },
       ],
-    },
+    }, */
 
     {
       type: "link",

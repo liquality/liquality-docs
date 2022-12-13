@@ -73,12 +73,14 @@ Parameters:
 | clientId    | string | ClientID                       |
 
 ## Account
-
-Fetch all related accountdata
+Once you have created and logged into your wallet, you can now fetch all of the account data from the wallet state
 
 ```javascript
 wallet.state.accounts;
 ```
+
+Account data is an object in the following format
+
 
 ```typescript
 export enum AccountType {

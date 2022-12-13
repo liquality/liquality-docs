@@ -10,6 +10,8 @@ In regard to blockchain, some of the fees can be calculated as average speed/fee
 
 Available funds need to cover all fees to meet the precondition to start initiating a transaction; otherwise, validation/error handling will be triggered if not an alternative option to pay gas fees is provided.
 
+Here is an example line of editing the fee text.
+
 ---
 
 ## getSendTxFees

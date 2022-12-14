@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ---
 
-Liquality Wallet API and SDK relies on Torus wallet tech. This significantly simplifies the onboarding experiences and removes risk of key loss as users do not need to keep track of a seed phrase. Instead, the wallet and authentication is handled by key shares that allow for easy recoverability without compromising security.
+Liquality Wallet API and SDK relies on Torus wallet tech for authentication. This significantly simplifies the onboarding experience and removes risk of key loss as users do not need to keep track of a seed phrase. Instead, authentication is handled by key shares that allow for easy recoverability without compromising security.
 
 ### This is how it works:
 

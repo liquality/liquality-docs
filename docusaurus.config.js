@@ -90,17 +90,28 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Liquality",
+        title: "",
         logo: {
           alt: "Liquality Logo",
-          src: "img/Liquality.svg",
+          src: "img/logo_light.svg",
+          srcDark: "img/logo_dark.svg",
         },
         items: [
           {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Docs",
+            label: "Introduction",
+          },
+          {
+            href: "/functions/sdk",
+            label: "SDK",
+            position: "left",
+          },
+          {
+            href: "/walletapi",
+            label: "API",
+            position: "left",
           },
           {
             href: "https://github.com/Liquality",

@@ -1,6 +1,10 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import IntroLogo from "../../static/img/intro_illustration.svg";
+import { useColorMode } from "@docusaurus/theme-common";
+
+import IntroLogoDark from "../../static/img/intro_illustration.svg";
+import IntroLogoLight from "../../static/img/intro_illustration_light.svg";
+
 import AllBlockchains from "../../static/img/all_blockchains.svg";
 import Solana from "../../static/img/solana.svg";
 import Avax from "../../static/img/avax.svg";
@@ -13,6 +17,7 @@ import Near from "../../static/img/near.svg";
 import Rsk from "../../static/img/rsk.svg";
 import Eth from "../../static/img/eth.svg";
 import Bitcoin from "../../static/img/bitcoin.svg";
+import BtnArrow from "../../static/img/button.svg";
 
 const listToLoop = [
   {
@@ -23,12 +28,28 @@ const listToLoop = [
     ),
     href: "/functions/wallet",
   },
-  { title: "Tokens & Balances", href: "/functions/tokens" },
+  {
+    title: (
+      <p>
+        Tokens & <br /> Balances
+      </p>
+    ),
+    href: "/functions/tokens",
+  },
   { title: "Fees & Price Aggregation", href: "/functions/oraclefees" },
-  { title: "Collectibles & NFTs", href: "/functions/collectibles" },
+  {
+    title: (
+      <p>
+        Collectibles <br /> & NFTs
+      </p>
+    ),
+    href: "/functions/collectibles",
+  },
 ];
 
 export default function HomePage() {
+  const { isDarkTheme } = useColorMode();
+
   const _renderWalletSdkNavigationRow = () => {
     let rows = [];
 
@@ -44,31 +65,21 @@ export default function HomePage() {
             marginLeft: index === 0 ? 0 : 60,
           }}
         >
-          <p>{item.title}</p>
+          <p
+            style={{
+              marginTop: -23,
+            }}
+          >
+            {item.title}
+          </p>
           <a
             href={item.href}
             style={{
-              borderRadius: 22,
-              background: "#9D4DFA",
-              width: 104,
-              height: 30,
               color: "white",
             }}
             class="button"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              class="bi bi-arrow-right"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-              />
-            </svg>
+            <BtnArrow style={{}} />
           </a>
         </div>
       );
@@ -97,6 +108,7 @@ export default function HomePage() {
             flexDirection: "column",
             fontSize: 20,
             padding: 10,
+            width: "100%",
           }}
         >
           <p
@@ -115,7 +127,9 @@ export default function HomePage() {
               fontSize: 16,
             }}
           >
-An immersive wallet solution for games and app developers, with all of web3's benefits and none of the friction          </p>
+            An immersive wallet solution for games and app developers, with all
+            of web3's benefits and none of the friction{" "}
+          </p>
           <a
             href="/overview/whatIsWalletApiSdk"
             style={{
@@ -131,7 +145,7 @@ An immersive wallet solution for games and app developers, with all of web3's be
           </a>
         </div>
         <div style={{ marginleft: 129 }}>
-          <IntroLogo />
+          {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
         </div>
       </div>
       <h1>Wallet SDK</h1>

@@ -2,6 +2,17 @@ import React from "react";
 import Layout from "@theme/Layout";
 import IntroLogo from "../../static/img/intro_illustration.svg";
 import AllBlockchains from "../../static/img/all_blockchains.svg";
+import Solana from "../../static/img/solana.svg";
+import Avax from "../../static/img/avax.svg";
+import Opt from "../../static/img/opt.svg";
+import Arb from "../../static/img/arb.svg";
+
+import Bnb from "../../static/img/bnb.svg";
+import Polygon from "../../static/img/polygon.svg";
+import Near from "../../static/img/near.svg";
+import Rsk from "../../static/img/rsk.svg";
+import Eth from "../../static/img/eth.svg";
+import Bitcoin from "../../static/img/bitcoin.svg";
 
 const listToLoop = [
   {
@@ -138,7 +149,7 @@ export default function HomePage() {
       </div>
       <div
         style={{
-          width: 879,
+          width: "100%",
           height: 196,
           background: "rgba(255, 255, 255, 0.14)",
           border: "1px solid #000D35",
@@ -156,7 +167,65 @@ export default function HomePage() {
           <b>SUPPORTED BLOCKCHAINS</b>
           <br></br>
           <br></br>
-          <AllBlockchains />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Bitcoin
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Eth
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Rsk
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Near
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Polygon
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Bnb
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Arb
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Opt
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Avax
+              style={{
+                marginRight: 30,
+              }}
+            />
+            <Solana
+              style={{
+                marginRight: 30,
+              }}
+            />
+          </div>
         </p>
       </div>
     </div>

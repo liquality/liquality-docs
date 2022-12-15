@@ -115,9 +115,7 @@ export default function HomePage() {
               fontSize: 16,
             }}
           >
-            A frictionless and immersive solution for games and apps with all
-            the web3 benefits, and fully user-owned
-          </p>
+An immersive wallet solution for games and app developers, with all of web3's benefits and none of the friction          </p>
           <a
             href="/overview/whatIsWalletApiSdk"
             style={{

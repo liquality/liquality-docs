@@ -34,7 +34,7 @@ After you have called the updateNFTs function, you can now get all the nfts from
 wallet.getters.allNftCollections;
 ```
 
-All NFTs can be shown and sorted by collections, with all items grouped, regardless of supported chains and accounts to provide the user with a complete picture of ownership. The total number of NFTs is determined by uniqueness (not counting copies).
+All of the NFTs can be shown and sorted by collections, with all items grouped, regardless of supported chains and accounts to provide the user with a complete picture of ownership. The total number of NFTs is determined by uniqueness (not counting copies).
 
 ## View NFTs by account
 

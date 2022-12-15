@@ -36,7 +36,14 @@ const listToLoop = [
     ),
     href: "/functions/tokens",
   },
-  { title: "Fees & Price Aggregation", href: "/functions/oraclefees" },
+  {
+    title: (
+      <p>
+        Fees and Price <br /> Aggregation
+      </p>
+    ),
+    href: "/functions/oraclefees",
+  },
   {
     title: (
       <p>
@@ -95,6 +102,7 @@ export default function HomePage() {
       }}
     >
       <div
+        className="container"
         style={{
           display: "flex",
           flexDirection: "row",
@@ -103,6 +111,7 @@ export default function HomePage() {
         }}
       >
         <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",

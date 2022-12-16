@@ -19,7 +19,12 @@ import Near from "../../static/img/near.svg";
 import Rsk from "../../static/img/rsk.svg";
 import Eth from "../../static/img/eth.svg";
 import Bitcoin from "../../static/img/bitcoin.svg";
-import BtnArrow from "../../static/img/button.svg";
+import BtnArrowDarkMode from "../../static/img/button.svg";
+import BtnArrowLightMode from "../../static/img/button_lightmode.svg";
+
+import NftByAccountLight from "../../static/img/nft_by_account_light.svg";
+import NftByWalletLight from "../../static/img/nft_by_wallet_light.svg";
+import SendNftLight from "../../static/img/send_nft_light.svg";
 
 const listToLoop = [
   {
@@ -102,6 +107,27 @@ const supportedBlockchainsList = [
   },
 ];
 
+const graphicStyle = {
+  marginRight: 0,
+};
+const listToLoopAPI = [
+  {
+    graphic: <NftByAccountLight style={graphicStyle} />,
+    title: "NFT Collection by Account",
+    href: "/walletapi/account-nft-collections",
+  },
+  {
+    graphic: <NftByWalletLight style={graphicStyle} />,
+    title: "NFT Collection by Wallet",
+    href: "/walletapi/account-nft-collections",
+  },
+  {
+    graphic: <SendNftLight style={graphicStyle} />,
+    title: "Send NFT",
+    href: "/walletapi/send-nft-transaction",
+  },
+];
+
 export default function HomePage() {
   const { isDarkTheme } = useColorMode();
 
@@ -136,7 +162,70 @@ export default function HomePage() {
             }}
             className="button"
           >
-            <BtnArrow style={{}} />
+            {isDarkTheme ? (
+              <BtnArrowDarkMode style={{}} />
+            ) : (
+              <BtnArrowLightMode style={{}} />
+            )}
+          </a>
+        </div>
+      );
+    });
+
+    return (
+      <div
+        className="container"
+        style={{ width: "100%", display: "flex", flexDirection: "row" }}
+      >
+        <div className="row">{rows}</div>
+      </div>
+    );
+  };
+
+  const _renderWalletAPI = () => {
+    let rows = [];
+
+    rows = listToLoopAPI.map((item, index) => {
+      return (
+        <div
+          className="col-12 d-flex justify-content-center align-items-center"
+          key={index}
+        >
+          <a
+            href={item.href}
+            style={{
+              marginBottom: 50,
+            }}
+            className="button"
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Montserrat",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: 14,
+                  float: "left",
+                  color: isDarkTheme ? "white" : "#000D35",
+                }}
+              >
+                {item.title}
+              </p>
+              {item.graphic}
+            </div>
+            <div
+              style={{
+                marginTop: 20,
+                width: 220,
+                borderBottom: "1px solid grey",
+              }}
+            ></div>
           </a>
         </div>
       );
@@ -184,7 +273,16 @@ export default function HomePage() {
       );
     });
 
-    return <div style={{ display: "flex", flexWrap: "wrap" }}>{rows}</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {rows}
+      </div>
+    );
   };
 
   return (
@@ -264,6 +362,9 @@ export default function HomePage() {
           boxShadow: isDarkTheme ? null : "5px 5px black",
           display: "flex",
           flexDirection: "column",
+          marginBottom: 60,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div className="row">
@@ -282,6 +383,8 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <h1>Wallet API</h1>
+      {_renderWalletAPI()}
     </div>
   );
 }

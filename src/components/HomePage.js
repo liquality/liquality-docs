@@ -119,11 +119,12 @@ export default function HomePage() {
             fontSize: 15,
             padding: 20,
             marginBottom: 50,
+            marginRight: 45,
           }}
         >
           <p
             style={{
-              marginTop: 0,
+              marginTop: -23,
             }}
           >
             {item.title}
@@ -243,44 +244,43 @@ export default function HomePage() {
             Learn more
           </a>
         </div>
-        <div style={{ marginleft: 129 }}>
+        <div style={{ marginLeft: 129 }}>
           {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
         </div>
       </div>
       <h1>Wallet SDK</h1>
-      {/*  <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          padding: 10,
-          marginBottom: 50,
-        }}
-      > */}
+
       {_renderWalletSdkNavigationRow()}
 
       <div
+        className="container-fluid"
         style={{
           width: "100%",
-          height: 196,
           background: "rgba(255, 255, 255, 0.14)",
           border: "1px solid #000D35",
           borderRadius: 28,
           marginTop: 30,
           padding: 30,
           boxShadow: isDarkTheme ? null : "5px 5px black",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        {" "}
-        <p
-          style={{
-            fontSize: 13,
-          }}
-        >
-          <b>SUPPORTED BLOCKCHAINS</b>
-          <br></br>
-          <br></br>
-          {_renderSupportedBlockchains()}
-        </p>
+        <div className="row">
+          <div className="col-sm-12">
+            <p
+              style={{
+                fontSize: 13,
+              }}
+            >
+              {" "}
+              <b>SUPPORTED BLOCKCHAINS</b>
+              <br></br>
+              <br></br>
+              {_renderSupportedBlockchains()}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

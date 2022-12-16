@@ -250,7 +250,7 @@ export default function HomePage() {
                   fontStyle: "normal",
                   fontWeight: "600",
                   fontSize: 14,
-                  float: "left",
+
                   color: isDarkTheme ? "white" : "#000D35",
                 }}
               >
@@ -271,10 +271,7 @@ export default function HomePage() {
     });
 
     return (
-      <div
-        className="container"
-        style={{ width: "100%", display: "flex", flexDirection: "row" }}
-      >
+      <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
         <div className="row">{rows}</div>
       </div>
     );
@@ -422,7 +419,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <h1>Wallet API</h1>
+      <h1>Wallet APIs</h1>
       {_renderWalletAPI()}
     </div>
   );

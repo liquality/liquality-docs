@@ -22,9 +22,16 @@ import Bitcoin from "../../static/img/bitcoin.svg";
 import BtnArrowDarkMode from "../../static/img/button.svg";
 import BtnArrowLightMode from "../../static/img/button_lightmode.svg";
 
+//Light mode
 import NftByAccountLight from "../../static/img/nft_by_account_light.svg";
 import NftByWalletLight from "../../static/img/nft_by_wallet_light.svg";
 import SendNftLight from "../../static/img/send_nft_light.svg";
+import MintNftLight from "../../static/img/mint_nft_light.svg";
+import AccountBalLight from "../../static/img/accountbal_light.svg";
+import TotalFiatLight from "../../static/img/total_fiat_light.svg";
+import SwapLight from "../../static/img/swap_light.svg";
+import SendLight from "../../static/img/send_light.svg";
+import TransactionFeesLight from "../../static/img/transaction_fees_light.svg";
 
 const listToLoop = [
   {
@@ -107,29 +114,61 @@ const supportedBlockchainsList = [
   },
 ];
 
-const graphicStyle = {
-  marginRight: 0,
-};
-const listToLoopAPI = [
-  {
-    graphic: <NftByAccountLight style={graphicStyle} />,
-    title: "NFT Collection by Account",
-    href: "/walletapi/account-nft-collections",
-  },
-  {
-    graphic: <NftByWalletLight style={graphicStyle} />,
-    title: "NFT Collection by Wallet",
-    href: "/walletapi/account-nft-collections",
-  },
-  {
-    graphic: <SendNftLight style={graphicStyle} />,
-    title: "Send NFT",
-    href: "/walletapi/send-nft-transaction",
-  },
-];
-
 export default function HomePage() {
   const { isDarkTheme } = useColorMode();
+
+  const graphicStyle = {
+    marginRight: 0,
+  };
+  const listToLoopAPI = [
+    {
+      graphic: isDarkTheme ? null : <NftByAccountLight style={graphicStyle} />,
+      title: "NFT Collection by Account",
+      href: "/walletapi/account-nft-collections",
+    },
+    {
+      graphic: isDarkTheme ? null : <NftByWalletLight style={graphicStyle} />,
+      title: "NFT Collection by Wallet",
+      href: "/walletapi/account-nft-collections",
+    },
+    {
+      graphic: isDarkTheme ? null : <SendNftLight style={graphicStyle} />,
+      title: "Send NFT",
+      href: "/walletapi/send-nft-transaction",
+    },
+    {
+      graphic: isDarkTheme ? null : <MintNftLight style={graphicStyle} />,
+      title: "Mint NFT",
+      href: "/walletapi/mint-nft",
+    },
+    {
+      graphic: isDarkTheme ? null : <AccountBalLight style={graphicStyle} />,
+      title: "Accounts with Balance",
+      href: "/walletapi/accounts-with-balance",
+    },
+    {
+      graphic: isDarkTheme ? null : <TotalFiatLight style={graphicStyle} />,
+      title: "Total FIAT Balance",
+      href: "/walletapi/total-fiat-balance",
+    },
+    {
+      graphic: isDarkTheme ? null : <SwapLight style={graphicStyle} />,
+      title: "Swap",
+      href: "/walletapi/swap",
+    },
+    {
+      graphic: isDarkTheme ? null : <SendLight style={graphicStyle} />,
+      title: "Send",
+      href: "/walletapi/send",
+    },
+    {
+      graphic: isDarkTheme ? null : (
+        <TransactionFeesLight style={graphicStyle} />
+      ),
+      title: "Transaction Fees",
+      href: "/walletapi/get-send-tx-fees",
+    },
+  ];
 
   const _renderWalletSdkNavigationRow = () => {
     let rows = [];

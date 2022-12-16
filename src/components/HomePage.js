@@ -33,6 +33,17 @@ import SwapLight from "../../static/img/swap_light.svg";
 import SendLight from "../../static/img/send_light.svg";
 import TransactionFeesLight from "../../static/img/transaction_fees_light.svg";
 
+//Dark mode
+import NftByAccountDark from "../../static/img/nft_by_account_dark.svg";
+import NftByWalletDark from "../../static/img/nft_by_wallet_dark.svg";
+import SendNftDark from "../../static/img/send_nft_dark.svg";
+import MintNftDark from "../../static/img/mint_nft_dark.svg";
+import AccountBalDark from "../../static/img/accountbal_dark.svg";
+import TotalFiatDark from "../../static/img/total_fiat_dark.svg";
+import SwapDark from "../../static/img/swap_dark.svg";
+import SendDark from "../../static/img/send_dark.svg";
+import TransactionFeesDark from "../../static/img/transaction_fees_dark.svg";
+
 const listToLoop = [
   {
     title: (
@@ -117,54 +128,49 @@ const supportedBlockchainsList = [
 export default function HomePage() {
   const { isDarkTheme } = useColorMode();
 
-  const graphicStyle = {
-    marginRight: 0,
-  };
   const listToLoopAPI = [
     {
-      graphic: isDarkTheme ? null : <NftByAccountLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <NftByAccountDark /> : <NftByAccountLight />,
       title: "NFT Collection by Account",
       href: "/walletapi/account-nft-collections",
     },
     {
-      graphic: isDarkTheme ? null : <NftByWalletLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <NftByWalletDark /> : <NftByWalletLight />,
       title: "NFT Collection by Wallet",
       href: "/walletapi/account-nft-collections",
     },
     {
-      graphic: isDarkTheme ? null : <SendNftLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <SendNftDark /> : <SendNftLight />,
       title: "Send NFT",
       href: "/walletapi/send-nft-transaction",
     },
     {
-      graphic: isDarkTheme ? null : <MintNftLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <MintNftDark /> : <MintNftLight />,
       title: "Mint NFT",
       href: "/walletapi/mint-nft",
     },
     {
-      graphic: isDarkTheme ? null : <AccountBalLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <AccountBalDark /> : <AccountBalLight />,
       title: "Accounts with Balance",
       href: "/walletapi/accounts-with-balance",
     },
     {
-      graphic: isDarkTheme ? null : <TotalFiatLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <TotalFiatDark /> : <TotalFiatLight />,
       title: "Total FIAT Balance",
       href: "/walletapi/total-fiat-balance",
     },
     {
-      graphic: isDarkTheme ? null : <SwapLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <SwapDark /> : <SwapLight />,
       title: "Swap",
       href: "/walletapi/swap",
     },
     {
-      graphic: isDarkTheme ? null : <SendLight style={graphicStyle} />,
+      graphic: isDarkTheme ? <SendDark /> : <SendLight />,
       title: "Send",
       href: "/walletapi/send",
     },
     {
-      graphic: isDarkTheme ? null : (
-        <TransactionFeesLight style={graphicStyle} />
-      ),
+      graphic: isDarkTheme ? <TransactionFeesDark /> : <TransactionFeesLight />,
       title: "Transaction Fees",
       href: "/walletapi/get-send-tx-fees",
     },

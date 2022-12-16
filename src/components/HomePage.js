@@ -190,7 +190,7 @@ export default function HomePage() {
             fontSize: 15,
             padding: 20,
             marginBottom: 50,
-            marginRight: 45,
+            marginRight: 70,
           }}
         >
           <p
@@ -267,7 +267,7 @@ export default function HomePage() {
             <div
               style={{
                 marginTop: 20,
-                width: 220,
+                width: 275,
                 borderBottom: "1px solid grey",
               }}
             ></div>
@@ -387,7 +387,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <h1>Wallet SDK</h1>
+      <h1 style={{ marginBottom: 50 }}>Wallet SDK</h1>
 
       {_renderWalletSdkNavigationRow()}
 
@@ -424,7 +424,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <h1>Wallet APIs</h1>
+      <h1 style={{ marginBottom: 50 }}>Wallet APIs</h1>
       {_renderWalletAPI()}
     </div>
   );

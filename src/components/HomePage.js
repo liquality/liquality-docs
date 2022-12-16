@@ -334,6 +334,7 @@ export default function HomePage() {
       }}
     >
       <div
+        className="d-flex justify-content-center align-items-center "
         style={{
           display: "flex",
           flexDirection: "row",
@@ -342,13 +343,10 @@ export default function HomePage() {
         }}
       >
         <div
-          className="container"
+          className="container d-flex flex-column"
           style={{
-            display: "flex",
-            flexDirection: "column",
             fontSize: 20,
             padding: 10,
-            width: "100%",
           }}
         >
           <p
@@ -384,10 +382,11 @@ export default function HomePage() {
             Learn more
           </a>
         </div>
-        <div style={{ marginLeft: 129 }}>
+        <div style={{ marginLeft: 0 }}>
           {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
         </div>
       </div>
+
       <h1>Wallet SDK</h1>
 
       {_renderWalletSdkNavigationRow()}

@@ -6,7 +6,9 @@ import IntroLogoDark from "../../static/img/intro_illustration.svg";
 import IntroLogoLight from "../../static/img/intro_illustration_light.svg";
 
 import AllBlockchains from "../../static/img/all_blockchains.svg";
-import Solana from "../../static/img/solana.svg";
+import SolanaLight from "../../static/img/solana_lightmode.svg";
+import SolanaDark from "../../static/img/solana_darkmode.svg";
+
 import Avax from "../../static/img/avax.svg";
 import Opt from "../../static/img/opt.svg";
 import Arb from "../../static/img/arb.svg";
@@ -54,6 +56,52 @@ const listToLoop = [
   },
 ];
 
+let logoStyle = {
+  marginRight: 40,
+};
+const supportedBlockchainsList = [
+  {
+    logo: <Bitcoin style={logoStyle} />,
+    title: "BITCOIN",
+  },
+  {
+    logo: <Eth style={logoStyle} />,
+    title: "ETHEREUM",
+  },
+  {
+    logo: <Rsk style={logoStyle} />,
+    title: "RSK",
+  },
+  {
+    logo: <Near style={logoStyle} />,
+    title: "NEAR",
+  },
+  {
+    logo: <Polygon style={logoStyle} />,
+    title: "POLYGON",
+  },
+  {
+    logo: <Bnb style={logoStyle} />,
+    title: "BNB",
+  },
+  {
+    logo: <Arb style={logoStyle} />,
+    title: "ARBITRUM",
+  },
+  {
+    logo: <Opt style={logoStyle} />,
+    title: "OPTIMISM",
+  },
+  {
+    logo: <Avax style={logoStyle} />,
+    title: "AVALANCHE",
+  },
+  {
+    logo: <SolanaDark style={logoStyle} />,
+    title: "SOLANA",
+  },
+];
+
 export default function HomePage() {
   const { isDarkTheme } = useColorMode();
 
@@ -63,18 +111,19 @@ export default function HomePage() {
     rows = listToLoop.map((item, index) => {
       return (
         <div
+          className="col-12 d-flex justify-content-center align-items-center"
           key={index}
           style={{
             borderLeft: "1px solid grey",
             height: 100,
             fontSize: 15,
             padding: 20,
-            marginLeft: index === 0 ? 0 : 60,
+            marginBottom: 50,
           }}
         >
           <p
             style={{
-              marginTop: -23,
+              marginTop: 0,
             }}
           >
             {item.title}
@@ -84,7 +133,7 @@ export default function HomePage() {
             style={{
               color: "white",
             }}
-            class="button"
+            className="button"
           >
             <BtnArrow style={{}} />
           </a>
@@ -92,7 +141,49 @@ export default function HomePage() {
       );
     });
 
-    return rows;
+    return (
+      <div
+        className="container"
+        style={{ width: "100%", display: "flex", flexDirection: "row" }}
+      >
+        <div className="row">{rows}</div>
+      </div>
+    );
+  };
+
+  const _renderSupportedBlockchains = () => {
+    let rows = [];
+
+    rows = supportedBlockchainsList.map((item, index) => {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {item.logo}
+          <p
+            style={{
+              marginRight: 40,
+              marginTop: 15,
+              fontFamily: "Montserrat",
+              fontStyle: "normal",
+              fontWeight: "500",
+              fontSize: 9,
+              letterSpacing: 0.5,
+              color: isDarkTheme ? "#FFFFFF" : "#000000",
+            }}
+          >
+            {item.title}
+          </p>
+        </div>
+      );
+    });
+
+    return <div style={{ display: "flex", flexWrap: "wrap" }}>{rows}</div>;
   };
 
   return (
@@ -102,7 +193,6 @@ export default function HomePage() {
       }}
     >
       <div
-        className="container"
         style={{
           display: "flex",
           flexDirection: "row",
@@ -158,16 +248,16 @@ export default function HomePage() {
         </div>
       </div>
       <h1>Wallet SDK</h1>
-      <div
+      {/*  <div
         style={{
           display: "flex",
           flexDirection: "row",
           padding: 10,
           marginBottom: 50,
         }}
-      >
-        {_renderWalletSdkNavigationRow()}
-      </div>
+      > */}
+      {_renderWalletSdkNavigationRow()}
+
       <div
         style={{
           width: "100%",
@@ -177,6 +267,7 @@ export default function HomePage() {
           borderRadius: 28,
           marginTop: 30,
           padding: 30,
+          boxShadow: isDarkTheme ? null : "5px 5px black",
         }}
       >
         {" "}
@@ -188,65 +279,7 @@ export default function HomePage() {
           <b>SUPPORTED BLOCKCHAINS</b>
           <br></br>
           <br></br>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Bitcoin
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Eth
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Rsk
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Near
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Polygon
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Bnb
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Arb
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Opt
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Avax
-              style={{
-                marginRight: 30,
-              }}
-            />
-            <Solana
-              style={{
-                marginRight: 30,
-              }}
-            />
-          </div>
+          {_renderSupportedBlockchains()}
         </p>
       </div>
     </div>

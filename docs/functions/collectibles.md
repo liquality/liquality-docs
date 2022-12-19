@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The Liquality NFT API can manage collections of standardized NFTs (ERC-721, and ERC-1155) on multiple chains (atm: Ethereum, Polygon, Solana, and Arbitrum).
 
-The user gets easy access to NFTs whether in one place or related to the account, and is able to send, receive, and check stats.
+The user gets easy access to NFTs and is able to send, receive, and check stats.
 
 Data sources are delivered by providers (Moralis: Ethereum, Polygon, Solana; Covalent 2: Arbitrum). The data provider will deliver the image (otherwise placeholder), NFT name, NFT description, token ID, creator, creator fee, locked, collection description, account address, asset contract, token standard, and the number of copies owned if ERC-1155 is available.
 

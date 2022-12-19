@@ -326,7 +326,7 @@ export default function HomePage() {
       </div>
     );
   };
-
+  console.log(window.innerWidth, "INNERWIDTH");
   return (
     <div
       style={{
@@ -334,22 +334,15 @@ export default function HomePage() {
       }}
     >
       <div
-        className="d-flex justify-content-center align-items-center "
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
         }}
+        className="d-flex d-sm-none"
       >
-        <div
-          className="container d-flex flex-column"
-          style={{
-            fontSize: 20,
-            padding: 10,
-          }}
-        >
+        <div className="container-fluid d-flex flex-column text-center">
           <p
+            className="display-4 font-weight-bold mb-2"
             style={{
               fontSize: 40,
               fontFamily: "Montserrat",
@@ -360,16 +353,13 @@ export default function HomePage() {
           >
             Web3 Wallet API & SDK
           </p>
-          <p
-            style={{
-              fontSize: 16,
-            }}
-          >
+          <p className="lead">
             An immersive wallet solution for games and app developers, with all
-            of web3's benefits and none of the friction{" "}
+            of web3's benefits and none of the friction
           </p>
           <a
             href="/overview/whatIsWalletApiSdk"
+            className="btn btn-primary btn-lg"
             style={{
               borderRadius: 22,
               background: "#9D4DFA",
@@ -377,17 +367,18 @@ export default function HomePage() {
               padding: 10,
               color: "white",
             }}
-            class="button"
           >
             Learn more
           </a>
         </div>
-        <div style={{ marginLeft: 0 }}>
-          {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
-        </div>
+        {window.innerWidth > 800 ? (
+          <div className="d-none d-sm-block">
+            {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
+          </div>
+        ) : null}
       </div>
 
-      <h1 style={{ marginBottom: 50 }}>Wallet SDK</h1>
+      <h1 style={{ marginBottom: 50, marginTop: 20 }}>Wallet SDK</h1>
 
       {_renderWalletSdkNavigationRow()}
 

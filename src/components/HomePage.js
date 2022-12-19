@@ -325,7 +325,6 @@ export default function HomePage() {
       </div>
     );
   };
-  console.log(window.innerWidth, "INNERWIDTH");
   return (
     <div
       style={{
@@ -370,7 +369,7 @@ export default function HomePage() {
             Learn more
           </a>
         </div>
-        {window.innerWidth > 800 ? (
+        {window?.innerWidth > 800 ? (
           <div className="d-none d-sm-block">
             {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
           </div>

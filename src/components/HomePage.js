@@ -127,51 +127,58 @@ const supportedBlockchainsList = [
 ];
 
 export default function HomePage() {
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
 
   const listToLoopAPI = [
     {
-      graphic: isDarkTheme ? <NftByAccountDark /> : <NftByAccountLight />,
+      graphic:
+        colorMode === "dark" ? <NftByAccountDark /> : <NftByAccountLight />,
       title: "NFT Collection by Account",
       href: "/walletapi/account-nft-collections",
     },
     {
-      graphic: isDarkTheme ? <NftByWalletDark /> : <NftByWalletLight />,
+      graphic:
+        colorMode === "dark" ? <NftByWalletDark /> : <NftByWalletLight />,
       title: "NFT Collection by Wallet",
       href: "/walletapi/account-nft-collections",
     },
     {
-      graphic: isDarkTheme ? <SendNftDark /> : <SendNftLight />,
+      graphic: colorMode === "dark" ? <SendNftDark /> : <SendNftLight />,
       title: "Send NFT",
       href: "/walletapi/send-nft-transaction",
     },
     {
-      graphic: isDarkTheme ? <MintNftDark /> : <MintNftLight />,
+      graphic: colorMode === "dark" ? <MintNftDark /> : <MintNftLight />,
       title: "Mint NFT",
       href: "/walletapi/mint-nft",
     },
     {
-      graphic: isDarkTheme ? <AccountBalDark /> : <AccountBalLight />,
+      graphic: colorMode === "dark" ? <AccountBalDark /> : <AccountBalLight />,
       title: "Accounts with Balance",
       href: "/walletapi/accounts-with-balance",
     },
     {
-      graphic: isDarkTheme ? <TotalFiatDark /> : <TotalFiatLight />,
+      graphic: colorMode === "dark" ? <TotalFiatDark /> : <TotalFiatLight />,
       title: "Total FIAT Balance",
       href: "/walletapi/total-fiat-balance",
     },
     {
-      graphic: isDarkTheme ? <SwapDark /> : <SwapLight />,
+      graphic: colorMode === "dark" ? <SwapDark /> : <SwapLight />,
       title: "Swap",
       href: "/walletapi/swap",
     },
     {
-      graphic: isDarkTheme ? <SendDark /> : <SendLight />,
+      graphic: colorMode === "dark" ? <SendDark /> : <SendLight />,
       title: "Send",
       href: "/walletapi/send",
     },
     {
-      graphic: isDarkTheme ? <TransactionFeesDark /> : <TransactionFeesLight />,
+      graphic:
+        colorMode === "dark" ? (
+          <TransactionFeesDark />
+        ) : (
+          <TransactionFeesLight />
+        ),
       title: "Transaction Fees",
       href: "/walletapi/get-send-tx-fees",
     },
@@ -191,7 +198,7 @@ export default function HomePage() {
             fontSize: 15,
             padding: 20,
             marginBottom: 50,
-            marginRight: 105,
+            marginRight: index === 3 ? 0 : 105,
           }}
         >
           <p
@@ -207,7 +214,7 @@ export default function HomePage() {
               color: "white",
             }}
           >
-            {isDarkTheme ? (
+            {colorMode === "dark" ? (
               <BtnArrowDarkMode style={{}} />
             ) : (
               <BtnArrowLightMode style={{}} />
@@ -257,7 +264,7 @@ export default function HomePage() {
                   fontWeight: "600",
                   fontSize: 14,
 
-                  color: isDarkTheme ? "white" : "#000D35",
+                  color: colorMode === "dark" ? "white" : "#000D35",
                 }}
               >
                 {item.title}
@@ -306,7 +313,7 @@ export default function HomePage() {
               fontWeight: "500",
               fontSize: 9,
               letterSpacing: 0.5,
-              color: isDarkTheme ? "#FFFFFF" : "#000000",
+              color: colorMode === "dark" ? "#FFFFFF" : "#000000",
             }}
           >
             {item.title}
@@ -377,14 +384,14 @@ export default function HomePage() {
               <div className="d-none d-sm-block">
                 {console.log(window.innerWidth, "innerwid")}
 
-                {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
+                {colorMode === "dark" ? <IntroLogoDark /> : <IntroLogoLight />}
               </div>
             ) : null;
           }}
         </BrowserOnly> */}
 
         <div className="d-none d-sm-block">
-          {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
+          {colorMode === "dark" ? <IntroLogoDark /> : <IntroLogoLight />}
         </div>
       </div>
 
@@ -401,7 +408,7 @@ export default function HomePage() {
           borderRadius: 28,
           marginTop: 30,
           padding: 30,
-          boxShadow: isDarkTheme ? null : "5px 5px black",
+          boxShadow: colorMode === "dark" ? null : "5px 5px black",
           display: "flex",
           flexDirection: "column",
           marginBottom: 60,

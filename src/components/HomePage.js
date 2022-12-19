@@ -7,8 +7,8 @@ import IntroLogoDark from "../../static/img/intro_illustration.svg";
 import IntroLogoLight from "../../static/img/intro_illustration_light.svg";
 
 import AllBlockchains from "../../static/img/all_blockchains.svg";
-import SolanaLight from "../../static/img/solana_lightmode.svg";
-import SolanaDark from "../../static/img/solana_darkmode.svg";
+//import SolanaLight from "../../static/img/solana_lightmode.svg";
+import SolanaDark from "../../static/img/sol.png";
 
 import Avax from "../../static/img/avax.svg";
 import Opt from "../../static/img/opt.svg";
@@ -121,7 +121,7 @@ const supportedBlockchainsList = [
     title: "AVALANCHE",
   },
   {
-    logo: <SolanaDark style={logoStyle} />,
+    logo: <img src="./../../static/img/sol.png" width="30" />,
     title: "SOLANA",
   },
 ];
@@ -197,8 +197,9 @@ export default function HomePage() {
             height: 100,
             fontSize: 15,
             padding: 20,
+            paddingLeft: 30,
             marginBottom: 50,
-            marginRight: index === 3 ? 0 : 105,
+            marginRight: index === 3 ? 0 : 130,
           }}
         >
           <p
@@ -352,12 +353,12 @@ export default function HomePage() {
             style={{
               fontSize: 40,
               fontFamily: "Montserrat",
-              fontWeight: "800",
+              fontWeight: "bold",
               marginBottom: 10,
               lineHeight: 1,
             }}
           >
-            Web3 Wallet API & SDK
+            <b>Web3 Wallet API & SDK</b>
           </p>
           <p className="lead">
             An immersive wallet solution for games and app developers, with all
@@ -365,13 +366,15 @@ export default function HomePage() {
           </p>
           <a
             href="/overview/whatIsWalletApiSdk"
-            className="btn btn-primary btn-lg"
+            type="button"
             style={{
               borderRadius: 22,
               background: "#9D4DFA",
-              width: 140,
-              padding: 10,
+              fontWeight: "600",
+              width: 150,
+              padding: 15,
               color: "white",
+              textDecoration: "none",
             }}
           >
             Learn more

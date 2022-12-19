@@ -190,7 +190,7 @@ export default function HomePage() {
             fontSize: 15,
             padding: 20,
             marginBottom: 50,
-            marginRight: 70,
+            marginRight: 105,
           }}
         >
           <p
@@ -205,7 +205,6 @@ export default function HomePage() {
             style={{
               color: "white",
             }}
-            className="button"
           >
             {isDarkTheme ? (
               <BtnArrowDarkMode style={{}} />

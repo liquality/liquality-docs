@@ -4,9 +4,9 @@ sidebar_position: 7
 
 # Fees & Price Aggregation
 
-Fees vary in regard to the type of transaction, blockchain, and/or provider involved.
+Fees vary depending on the type of transaction, blockchain, and/or provider involved.
 
-In regard to blockchain, some of the fees can be calculated as average speed/fee assumption (aka estimated), and the maximum. Toward the user, there can be presets used, or the option to customize. Some blockchains like Solana have fixed fees.
+Depending on the blockchain, some of the fees can be calculated as average speed/fee assumption (aka estimated), and the maximum. For the user, there can be presets used, or the option to customize. Some blockchains like Solana have fixed fees.
 
 Available funds need to cover all fees to meet the precondition to start initiating a transaction; otherwise, validation/error handling will be triggered if not an alternative option to pay gas fees is provided.
 

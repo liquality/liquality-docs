@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import { useColorMode } from "@docusaurus/theme-common";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 import IntroLogoDark from "../../static/img/intro_illustration.svg";
 import IntroLogoLight from "../../static/img/intro_illustration_light.svg";
@@ -369,11 +370,22 @@ export default function HomePage() {
             Learn more
           </a>
         </div>
-        {window?.innerWidth > 800 ? (
-          <div className="d-none d-sm-block">
-            {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
-          </div>
-        ) : null}
+
+        {/*     <BrowserOnly>
+          {() => {
+            window.innerWidth > 900 ? (
+              <div className="d-none d-sm-block">
+                {console.log(window.innerWidth, "innerwid")}
+
+                {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
+              </div>
+            ) : null;
+          }}
+        </BrowserOnly> */}
+
+        <div className="d-none d-sm-block">
+          {isDarkTheme ? <IntroLogoDark /> : <IntroLogoLight />}
+        </div>
       </div>
 
       <h1 style={{ marginBottom: 50, marginTop: 20 }}>Wallet SDK</h1>

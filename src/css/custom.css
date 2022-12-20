@@ -6,6 +6,7 @@
 
 /* You can override the default Infima variables here. */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 
 
@@ -41,4 +42,10 @@
   --ifm-color-primary-lighter: #07afc1;
   --ifm-color-primary-lightest: #08c6da;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 575.98px) {
+  .d-flex {
+    flex-direction: column;
+  }
 }

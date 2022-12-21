@@ -262,7 +262,12 @@ export default function HomePage() {
     return (
       <div
         className="container"
-        style={{ width: "100%", display: "flex", flexDirection: "row" }}
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
       >
         <div className="row">{rows}</div>
       </div>

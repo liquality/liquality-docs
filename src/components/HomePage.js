@@ -266,7 +266,7 @@ export default function HomePage() {
           width: "100%",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-evenly",
+          justifyContent: "space-between",
         }}
       >
         <div className="row">{rows}</div>

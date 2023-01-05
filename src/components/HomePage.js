@@ -398,7 +398,7 @@ export default function HomePage() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "space-evenly",
+                justifyContent: "space-between",
               }}
             >
               {rows}

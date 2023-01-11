@@ -272,7 +272,7 @@ components:
         walletId:
           type: string
           example: 0729a580-2240-11e6-9eb5-0002a5d5c51b
-        reciever:
+        receiver:
           type: string
           example: 0x1234567890123456789012345678901234567890
         values:

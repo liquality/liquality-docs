@@ -12,7 +12,7 @@ Data sources are delivered by providers (Moralis: Ethereum, Polygon, Solana; Cov
 
 ---
 
-## Recieve NFTs
+## Receive NFTs
 
 The user will automatically receive the NFTs by injection in regard to the account address provided and then shown in the generalized NFT area (regardless of account), or in the account's first position. The detection of the NFTs happens automatically.
 

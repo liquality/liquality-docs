@@ -39,40 +39,199 @@ That means if you choose to split your shares between Google SSO, device storage
 
 ## Create a wallet
 
+In order to create a wallet or do wallet interactions, you first have to initiate the tKey instance.
+
+This is done by calling:
+
 ```javascript
-const wallet = await createWallet({
-  serviceProvider: serviceProvider,
-  storageLayer,
-  modules: {
-    webStorage: webStorageModule,
-    securityQuestions: securityQuestionsModule,
-    shareTransfer: shareTransferModule,
+const tKey = authService.init(directParams);
+```
+
+The init() function takes an object that we call directParams and it has the following object properties:
+
+| Name          | Type    | Description                                        |
+| ------------- | ------- | -------------------------------------------------- |
+| baseUrl       | string  | the path to the serviceworker that is being served |
+| enableLogging | boolean | decides if logging should be enabled               |
+| networkUrl    | string  | rpcUrl to the network you want to connect to       |
+| network       | string  | torusNetwork, could be mainnet or testnet          |
+
+Example:
+
+```javascript
+const directParams = {
+  baseUrl: `http://localhost:3005/serviceworker`,
+  enableLogging: true,
+  networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
+  network: "testnet" as any,
+};
+```
+
+Then you can trigger a wallet creation with google SSO. This is done by calling the
+
+```javascript
+const wallet = await authService.createWallet(tKey, verifierMap);
+```
+
+Where tKey is the variable that you got from the init() function and the verifierMap is an object with the properties:
+
+```javascript
+const verifierMap: Record<string, any> = {
+  google: {
+    name: "Google",
+    typeOfLogin: "google",
+    clientId:
+      "852640103435-0qhvrgpkm66c9hu0co6edkhao3hrjlv3.apps.googleusercontent.com",
+    verifier: "liquality-google-testnet",
   },
-});
+};
 ```
 
-## Unlock a wallet with service provider
+| Name        | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
+| name        | string | name of type of SSO login                               |
+| typeOfLogin | string | type of SSO login                                       |
+| clientId    | string | client ID that is taken from the SSO, developers portal |
+| verifier    | string | the verifier name from the SSO developers portal        |
 
-Unlock wallet with a service provider (Google SSO)
+A clientID and verifier can be created on the SSO developers portal. For google SSO with gmail, you can follow the steps to create authorization details: https://developers.google.com/identity/sign-in/web/sign-in
 
-```javascript
-const loginResponse = await triggerLogin({
-  typeOfLogin: "google",
-  verifier: "testnet-verifier",
-  clientId:
-    "134678854652-vnm7amoq0p23kkpkfviveul9rb26rmgn.apps.googleusercontent.com",
-});
-```
+## Set a password share
+
+After you created your wallet, you can set a password share for the user.
 
 Parameters:
 
-| Name        | Type   | Description                    |
-| ----------- | ------ | ------------------------------ |
-| typeOfLogin | string | Type of login to unlock wallet |
-| verifier    | string | The verifier of the wallet     |
-| clientId    | string | ClientID                       |
+| Name     | Type         | Description                   |
+| -------- | ------------ | ----------------------------- |
+| tKey     | Thresholdkey | tKey instance from the init() |
+| password | string       | the password the user inputs  |
+
+```typescript
+let response = await authService.generateNewShareWithPassword(
+  tKey: ThresholdKey,
+  password: string
+);
+```
+
+## Login and unlock wallet
+
+Unlock wallet with single-sign-on
+This function uses 2 of the shares (the webstorage share that is stored on the browser side) and the share stored on the service provider to log in and unlock your wallet.
+
+```javascript
+const loginResponse = await loginUsingSSO(tKey: ThresholdKey, verifierMap: Record<string, any>)
+```
+
+It expects the tKey that is initilized from the init() function and the verifierMap described previously.
+
+## React Example, create wallet and sign in
+
+```javascript
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { AuthService } from "sdk/src/auth/auth.service";
+import { DirectParams } from "sdk/src/types";
+
+type Props = {
+  directParams: DirectParams,
+  verifierMap: Record<string, any>,
+};
+
+export const CreateWallet: React.FC<Props> = (props) => {
+  const { directParams, verifierMap } = props;
+  const [tKey, setTKey] = useState < any > {};
+  const [loginResponse, setLoginResponse] = useState < any > {};
+  const [password, setPassword] = useState < string > "";
+  const [errorMsg, setErrorMsg] = useState < string > "";
+  const [passwordResponse, setPasswordResponse] = useState < string > "";
+  const [newPasswordShare, setNewPasswordShare] = useState < any > {};
+  const authService = new AuthService();
+
+  useEffect(() => {
+    const init = async () => {
+      const tKeyResponse = await authService.init(directParams);
+      console.log();
+      setTKey(tKeyResponse);
+    };
+
+    init();
+  }, [loginResponse, passwordResponse]);
+
+  const createNewWallet = async () => {
+    const response = await authService.createWallet(tKey, verifierMap);
+    setLoginResponse(response);
+  };
+
+  const generatePassword = async (password: string) => {
+    let response = await authService.generateNewShareWithPassword(
+      loginResponse.tKey,
+      password
+    );
+    setNewPasswordShare(response.result);
+    response.msg.startsWith("Error")
+      ? setErrorMsg(response.msg)
+      : setPasswordResponse(response.msg);
+  };
+
+  const _renderPasswordInput = () => {
+    return (
+      <div>
+        Set password minimum 10 characters:
+        <input
+          type="password"
+          placeholder="Address"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <button onClick={() => generatePassword(password)}>Set password</button>
+        <br></br>
+        {errorMsg ? <p style={{ color: "red" }}> {errorMsg}</p> : null}
+        {passwordResponse.startsWith("Error") ? (
+          <p style={{ color: "red" }}> {passwordResponse}</p>
+        ) : (
+          <p style={{ color: "green" }}>{passwordResponse}</p>
+        )}
+      </div>
+    );
+  };
+
+  const _renderCreatedWalletDetails = () => {
+    return (
+      <div>
+        <h3 style={{ color: "green" }}>
+          Your wallet was created successfully!
+        </h3>
+        <p>
+          <b>Public Address:</b> <br></br>
+          {loginResponse.loginResponse?.publicAddress}
+        </p>
+        <p>
+          <b>Private Key:</b> <br></br>
+          {loginResponse.loginResponse?.privateKey}
+        </p>
+        <p>
+          <b>User email:</b> <br></br> {loginResponse.loginResponse?.userInfo?.email}
+        </p>
+      </div>
+    );
+  };
+
+  return (
+    <div style={{ border: "1px solid black", padding: 10 }}>
+      <h3>Liquality & tKey Create Wallet</h3>
+      <button onClick={createNewWallet}>Create Wallet</button>
+      {loginResponse.loginResponse ? _renderCreatedWalletDetails() : null}
+      {loginResponse.loginResponse ? _renderPasswordInput() : null}
+    </div>
+  );
+};
+```
 
 ## Account
+
 Once you have created and logged into your wallet, you can now fetch all of the account data from the wallet state
 
 ```javascript
@@ -80,7 +239,6 @@ wallet.state.accounts;
 ```
 
 Account data is an object in the following format
-
 
 ```typescript
 export enum AccountType {

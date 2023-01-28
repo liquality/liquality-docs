@@ -16,56 +16,91 @@ Data sources are delivered by providers (Moralis: Ethereum, Polygon, Solana; Cov
 
 The user will automatically receive the NFTs by injection in regard to the account address provided and then shown in the generalized NFT area (regardless of account), or in the account's first position. The detection of the NFTs happens automatically.
 
-## updateNFTs
+## View NFTs from specific address and chain
 
-```javascript
-await updateNFTs({
-  walletId: activeWalletId,
-  network: activeNetwork,
-  accountIds: accIds,
-});
+```typescript
+const nfts = await getNfts(owner: string, chainID: number): Promise<Nft[] | null>
 ```
 
-## View NFTs grouped in one place
+Parameters:
 
-After you have called the updateNFTs function, you can now get all the nfts from
+| Name    | Type   | Description                                         |
+| ------- | ------ | --------------------------------------------------- |
+| owner   | string | address of the wallet you want to get all nfts from |
+| chainID | number | which chain you want to get all NFTs from           |
 
-```javascript
-wallet.getters.allNftCollections;
+<br></br>
+
+:::tip You can check the chainID for all chains
+like Polygon, Arbitrum, Solana, Ethereum etc.. using https://chainlist.org/
+
+The chainID for Ethereum Mainnet is 1
+:::
+
+Return values:
+
+```typescript
+export interface Nft {
+  id: string;
+  contract: {
+    address: string;
+    name?: string;
+    symbol?: string;
+    type?: NftType;
+  };
+  metadata?: {
+    name?: string;
+    description?: string;
+    image?: string;
+  };
+  balance?: number;
+}
 ```
 
-All of the NFTs can be shown and sorted by collections, with all items grouped, regardless of supported chains and accounts to provide the user with a complete picture of ownership. The total number of NFTs is determined by uniqueness (not counting copies).
+## Transfer and Send NFT
+
+```typescript
+ await transferNft(
+    transferRequest: TransferRequest,
+    chainId: number,
+    pk: string,
+  ): Promise<string>
+```
+
+Paramters:
+
+| Name            | Type            | Description                          |
+| --------------- | --------------- | ------------------------------------ |
+| transferRequest | TransferRequest | ...more to come                      |
+| chainID         | number          | which chain you want to send to      |
+| pk              | string          | users privateKey to sign transaction |
+
+```javascript
+export interface TransferRequest {
+  contractAddress: string;
+  owner: string;
+  receiver: string;
+  tokenIDs: string[];
+  amounts?: number[];
+}
+```
+
+Return values:
+
+| Name   | Type   | Description           |
+| ------ | ------ | --------------------- |
+| txHash | string | transaction hash (id) |
+
+Users can send a single NFT (or copy) to another address with enough funds to cover blockchains' speed/fee with out-of-the-box validation and error handling.
+:::tip
+Once the tx is initiated the progress will be tracked (pending vs. completed) and shown to the user with an activity log as well tx details.
+:::
 
 ## View NFTs by account
-
-:::tip
-You can also get NFTs from specific account (Polygon, Arbitrum, Solana, Ethereum etc..) using the accountId
-:::
 
 ```javascript
 wallet.getters.accountNftCollections(accountId);
 ```
-
-## Send NFT
-
-Users can send a single NFT (or copy) to another address with enough funds to cover blockchains' speed/fee with out-of-the-box validation and error handling.
-
-```javascript
-export const sendNFTTransaction = async({
-  network,
-  accountId,
-  walletId,
-  receiver,
-  values,
-  fee,
-  feeLabel,
-  nft,
-});
-```
-
-:::tip
-Once the tx is initiated the progress will be tracked (pending vs. completed) and shown to the user with an activity log as well tx details.
-:::
 
 ## Get Marketplace Name
 

@@ -151,7 +151,6 @@ export const CreateWallet: React.FC<Props> = (props) => {
   useEffect(() => {
     const init = async () => {
       const tKeyResponse = await authService.init(directParams);
-      console.log();
       setTKey(tKeyResponse);
     };
 

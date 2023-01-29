@@ -5,6 +5,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const math = require("remark-math");
 const katex = require("rehype-katex");
+const remarkMath = require("remark-math");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -64,12 +65,19 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/", // Serve the docs at the site's root
-          remarkPlugins: [math],
+          remarkPlugins: [
+            remarkMath,
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
+          ],
+
           rehypePlugins: [katex],
         },
         blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
+        },
+        pages: {
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
       },
     ],

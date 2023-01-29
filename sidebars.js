@@ -29,6 +29,10 @@ module.exports = {
         },
         {
           type: "doc",
+          id: "functions/initialization",
+        },
+        {
+          type: "doc",
           id: "functions/wallet",
         },
         {

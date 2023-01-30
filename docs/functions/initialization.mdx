@@ -383,7 +383,7 @@ That is why you need to polyfill certain modules in your project to override and
 
 If you are using `create-react-app` version >= 5 you may run into issues building and the project complaining about certain modules. You can resolve it by polyfilling.
 
-- Install `react-app-rewired` and the missing modules into your application
+- Install `react-app-rewired` and the required dependencies in your project
 
 ```bash npm2yarn
 npm install --save-dev react-app-rewired crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process
@@ -466,12 +466,67 @@ module.exports = function override(config) {
 
 ## Vue Polyfilling
 
-- Coming soon...
+- Install required dependencies in your project
+
+```bash npm2yarn
+npm install --save node-polyfill-webpack-plugin
+```
+
+Then add the following lines to `vue.config.js`
+
+```js
+const { defineConfig } = require("@vue/cli-service");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+module.exports = defineConfig({
+  transpileDependencies: true,
+  lintOnSave: false,
+  configureWebpack: {
+    plugins: [new NodePolyfillPlugin()],
+    optimization: {
+      splitChunks: {
+        chunks: "all",
+      },
+    },
+  },
+});
+```
 
 ## Angular Polyfilling
 
-- Coming soon...
+- Install required dependencies in your project
 
+```bash npm2yarn
+npm install --save-dev crypto-browserify stream-browserify assert stream-http https-browserify os-browserify process buffer url
 ```
 
+- Then add the following `paths` in the `tsconfig.json` in `compilerOptions`. That way webpack can access the correct dependencies.
+
+```ts
+{
+    "compilerOptions": {
+        "paths" : {
+            "crypto": ["./node_modules/crypto-browserify"],
+            "stream": ["./node_modules/stream-browserify"],
+            "assert": ["./node_modules/assert"],
+            "http": ["./node_modules/stream-http"],
+            "https": ["./node_modules/https-browserify"],
+            "os": ["./node_modules/os-browserify"],
+            "process": ["./node_modules/process"],
+        }
+    }
+}
+```
+
+- Add the following lines to `polyfills.ts` file:
+
+```typescript
+import { Buffer } from "buffer";
+
+(window as any).global = window;
+global.Buffer = Buffer;
+global.process = {
+  env: { DEBUG: undefined },
+  version: "",
+  nextTick: require("next-tick"),
+} as any;
 ```

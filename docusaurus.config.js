@@ -66,18 +66,17 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [
-            remarkMath,
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
 
           rehypePlugins: [katex],
         },
+        pages: {
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
+        },
         blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
-        },
-        pages: {
-          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
       },
     ],

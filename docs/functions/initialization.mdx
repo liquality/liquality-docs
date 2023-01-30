@@ -2,16 +2,128 @@
 sidebar_position: 1
 ---
 
+import Tabs from "@theme/Tabs";
+
+import TabItem from "@theme/TabItem";
+
 # Initialization
 
 ---
 
 ## Install
 
+You can use npm or yarn to install the Liquality SDK
+
 ```bash npm2yarn
-npm install save @liquality-sdk
+npm install @liquality-sdk
 ```
 
-## or
+## Service Provider Setup
 
-## Recovery
+The seamless login experience with social single-sign-on is dependent on the service worker which need to be registered in the project.
+
+## Webpack and Dependency Issues
+
+If you are setting up a new web3 project from scratch, chances are likely you will have some dependency
+issues that need polyfilling. This is because web3.js and ether.js that work with the Liquality SDK
+under the hood have certain dependencies which are not present within the browser environment by webpack 5.
+That is why you need to polyfill certain modules in your project to override and enable their usage.
+
+---
+
+## React Polyfilling
+
+If you are using `create-react-app` version >= 5 you may run into issues building and the project complaining about certain modules. You can resolve it by polyfilling.
+
+- Install `react-app-rewired` and the missing modules into your application
+
+```bash npm2yarn
+npm install --save-dev react-app-rewired crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process
+```
+
+Then create a file called `config-overrides.js` in the root folder with the following content:
+
+```js
+const webpack = require("webpack");
+
+module.exports = function override(config) {
+  const fallback = config.resolve.fallback || {};
+  Object.assign(fallback, {
+    crypto: require.resolve("crypto-browserify"),
+    stream: require.resolve("stream-browserify"),
+    assert: require.resolve("assert"),
+    http: require.resolve("stream-http"),
+    https: require.resolve("https-browserify"),
+    os: require.resolve("os-browserify"),
+    url: require.resolve("url"),
+  });
+  config.resolve.fallback = fallback;
+  config.plugins = (config.plugins || []).concat([
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+      Buffer: ["buffer", "Buffer"],
+    }),
+  ]);
+  config.ignoreWarnings = [/Failed to parse source map/];
+  config.module.rules.push({
+    test: /\.(js|mjs|jsx)$/,
+    enforce: "pre",
+    loader: require.resolve("source-map-loader"),
+    resolve: {
+      fullySpecified: false,
+    },
+  });
+  return config;
+};
+```
+
+- Within the `package.json` file in the root project, you also need to change the scripts field for start, build and test.
+  Instead of `react-scripts` replace it with `react-app-rewired`
+
+<Tabs
+  defaultValue="after"
+  values={[
+    { label: "before", value: "before" },
+    { label: "after", value: "after" },
+]}
+>
+
+<TabItem value="before">
+
+```typescript
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+},
+```
+
+</TabItem>
+
+<TabItem value="after">
+
+```typescript
+"scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+},
+```
+
+</TabItem>
+
+</Tabs>
+
+## Vue Polyfilling
+
+- Coming soon...
+
+## Angular Polyfilling
+
+- Coming soon...
+
+```
+
+```

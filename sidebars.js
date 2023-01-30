@@ -33,7 +33,7 @@ module.exports = {
         },
         {
           type: "doc",
-          id: "functions/wallet",
+          id: "functions/auth",
         },
         {
           type: "doc",

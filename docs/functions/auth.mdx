@@ -35,9 +35,11 @@ Users need to prove ownership of ⅔ shares in order to retrieve and recover the
 
 That means if you choose to split your shares between Google SSO, device storage and password, you can recover your account using google SSO + the password for example.
 
-## Auth
+---
 
-## Create a wallet
+## Programmatic Authorization
+
+### Create a wallet
 
 In order to create a wallet or do wallet interactions, you first have to initiate the tKey instance.
 
@@ -96,7 +98,7 @@ const verifierMap: Record<string, any> = {
 
 A clientID and verifier can be created on the SSO developers portal. For google SSO with gmail, you can follow the steps to create authorization details: https://developers.google.com/identity/sign-in/web/sign-in
 
-## Set a password share
+### Set a password share
 
 After you created your wallet, you can set a password share for the user.
 
@@ -114,7 +116,7 @@ let response = await authService.generateNewShareWithPassword(
 );
 ```
 
-## Login and unlock wallet
+### Login and unlock wallet
 
 Unlock wallet with single-sign-on
 This function uses 2 of the shares (the webstorage share that is stored on the browser side) and the share stored on the service provider to log in and unlock your wallet.
@@ -125,7 +127,7 @@ const loginResponse = await loginUsingSSO(tKey: ThresholdKey, verifierMap: Recor
 
 It expects the tKey that is initilized from the init() function and the verifierMap described previously.
 
-## React Example, create wallet and sign in
+### React Example, create wallet and sign in
 
 ```javascript
 import * as React from "react";
@@ -229,48 +231,8 @@ export const CreateWallet: React.FC<Props> = (props) => {
 };
 ```
 
-## Account
+---
 
-Once you have created and logged into your wallet, you can now fetch all of the account data from the wallet state
+## UI Component Authorization
 
-```javascript
-wallet.state.accounts;
-```
-
-Account data is an object in the following format
-
-```typescript
-export enum AccountType {
-  Default = "default",
-  BitcoinLedgerNativeSegwit = "bitcoin_ledger_nagive_segwit",
-  BitcoinLedgerLegacy = "bitcoin_ledger_legacy",
-  EthereumLedger = "ethereum_ledger",
-  RskLedger = "rsk_ledger",
-}
-
-export interface AccountDefinition {
-  type: AccountType;
-  name: string;
-  alias?: string;
-  chain: ChainId;
-  index: number;
-  derivationPath?: string;
-  addresses: string[];
-  assets: Asset[];
-  balances: Record<Asset, string>;
-  updatedAt?: number;
-  color: string;
-  enabled?: boolean;
-  chainCode?: string;
-  publicKey?: string;
-  nfts?: NFT[];
-}
-
-export interface AccountInfo {
-  derivationPath: string;
-  type: string;
-  chainCode?: string;
-  publicKey?: string;
-  address?: string;
-}
-```
+### Coming soon...

@@ -52,7 +52,7 @@ const listToLoop = [
         Create <br /> & Auth
       </p>
     ),
-    href: "/functions/wallet",
+    href: "/functions/auth",
   },
   {
     title: (

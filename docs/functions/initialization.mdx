@@ -33,7 +33,7 @@ will be redirected to the `http://localhost:3000/serviceworker/redirect` page af
 where the service worker will capture the results and send them back to the original window where
 the login was initiated.
 
-#### Service Worker Setup
+### Service Worker Setup
 
 To set up a service worker with React, you need to create a sw.js file in the public folder and register it in the index.html file.
 There is more information on how to do this in these outside resources.
@@ -379,7 +379,7 @@ That is why you need to polyfill certain modules in your project to override and
 
 ---
 
-## React Polyfilling
+### React Polyfill Solution
 
 If you are using `create-react-app` version >= 5 you may run into issues building and the project complaining about certain modules. You can resolve it by polyfilling.
 
@@ -425,6 +425,12 @@ module.exports = function override(config) {
 };
 ```
 
+:::info info
+
+If you're using `craco` or similar config files then similar changes need to be done to the `craco.config.js` file
+
+:::
+
 - Within the `package.json` file in the root project, you also need to change the scripts field for start, build and test.
   Instead of `react-scripts` replace it with `react-app-rewired`
 
@@ -464,7 +470,7 @@ module.exports = function override(config) {
 
 </Tabs>
 
-## Vue Polyfilling
+### Vue Polyfill Solution
 
 - Install required dependencies in your project
 
@@ -491,7 +497,7 @@ module.exports = defineConfig({
 });
 ```
 
-## Angular Polyfilling
+### Angular Polyfill Solution
 
 - Install required dependencies in your project
 

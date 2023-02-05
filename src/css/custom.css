@@ -5,47 +5,125 @@
  */
 
 /* You can override the default Infima variables here. */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 :root {
   --ifm-color-primary: #da70ec;
 
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: 'Montserrat';
+  --ifm-font-family-base: "Montserrat";
 
-  --ifm-color-primary-dark: #058997;
-  --ifm-color-primary-darker: #05818f;
-  --ifm-color-primary-darkest: #046a76;
+  --ifm-color-primary-dark: #da70ec;
+  --ifm-color-primary-darker: #da70ec;
+  --ifm-color-primary-darkest: #da70ec;
 
-  --ifm-color-primary-light: #07a7b9;
-  --ifm-color-primary-lighter: #07afc1;
-  --ifm-color-primary-lightest: #08c6da;
+  --ifm-color-primary-light: #da70ec;
+  --ifm-color-primary-lighter: #da70ec;
+  --ifm-color-primary-lightest: #da70ec;
 
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: #ffffff;
 
-  --ifm-footer-background-color: #000000;
-  --ifm-footer-link-color: #da70ec;
-  --ifm-footer-link-hover-color: #FFFFFF;
-  --ifm-footer-color: #9E9E9E;
+  --ifm-footer-background-color: #ffffff;
+  --ifm-footer-link-color: #ffffff;
+  --ifm-footer-link-hover-color: #ffffff;
+  --ifm-footer-color: #ffffff;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #da70ec;
-  --ifm-color-primary-dark: #058997;
-  --ifm-color-primary-darker: #05818f;
-  --ifm-color-primary-darkest: #046a76;
-  --ifm-color-primary-light: #07a7b9;
-  --ifm-color-primary-lighter: #07afc1;
-  --ifm-color-primary-lightest: #08c6da;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme="dark"] {
+  --ifm-color-primary: #ffffff;
+  --ifm-color-primary-dark: #ffffff;
+  --ifm-color-primary-darker: #ffffff;
+  --ifm-color-primary-darkest: #ffffff;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
+  --docusaurus-highlighted-code-line-bg: #ffffff;
 }
 
 @media (max-width: 575.98px) {
   .d-flex {
     flex-direction: column;
   }
+}
+
+.navbarBtn {
+  background-color: #9d4dfa;
+  border-radius: 22px;
+  margin-left: 10px;
+  color: "white" !important;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.navbarBtn:hover {
+  color: "white" !important;
+  background-color: #9d4dfa;
+}
+
+/* Styling one class specially in dark mode */
+[data-theme="dark"] .navbarBtn {
+  color: "white" !important;
+}
+/* Styling one class specially in dark mode */
+[data-theme="dark"] .navbarBtn:hover {
+  color: "white" !important;
+}
+
+html[data-theme="dark"] .navbar-github-link:before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+@media (max-width: 1059px) {
+  .navbar-github-link {
+    display: none;
+  }
+}
+
+.navbar-github-link:hover {
+  opacity: 0.5;
+}
+
+.navbar-github-link {
+  opacity: 1;
+}
+
+.navbar-github-link:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M32 16c0-8.837-7.163-16-16-16S0 7.163 0 16c0 7.46 5.105 13.726 12.011 15.499v-3.36c-4.454.978-5.382-1.955-5.382-1.955-.716-1.902-1.777-2.39-1.777-2.39-1.458-1.005.106-1.005.106-1.005 1.618.108 2.466 1.684 2.466 1.684 1.432 2.498 3.738 1.792 4.667 1.358.132-1.06.556-1.793 1.007-2.2-3.553-.38-7.291-1.793-7.291-8.095 0-1.792.636-3.259 1.644-4.4-.16-.407-.716-2.091.159-4.346 0 0 1.352-.434 4.401 1.684a15.157 15.157 0 0 1 4.004-.543c1.352 0 2.73.19 4.003.543 3.05-2.118 4.402-1.684 4.402-1.684.875 2.255.318 3.939.159 4.346 1.034 1.141 1.644 2.608 1.644 4.4 0 6.302-3.739 7.687-7.318 8.095.583.516 1.087 1.494 1.087 3.042 0 1.66.005 3.85.007 4.823C26.9 29.721 32 23.456 32 16ZM6.072 23.548c-.027.082-.16.109-.266.054-.106-.054-.185-.163-.132-.244.026-.082.159-.109.265-.054.106.054.16.163.133.244Zm.636.734c-.08.081-.239.027-.318-.082-.106-.109-.133-.272-.053-.353.08-.082.212-.027.318.081.106.136.133.3.053.354Zm.636.95c-.106.082-.265 0-.344-.136-.106-.136-.106-.326 0-.38.106-.081.265 0 .344.136.106.136.106.299 0 .38Zm.875.924c-.08.108-.265.081-.424-.055-.133-.136-.186-.326-.08-.407.08-.109.266-.082.425.054.132.109.159.299.08.408Zm1.193.516c-.026.136-.212.19-.397.136-.186-.055-.292-.218-.265-.326.026-.136.212-.19.397-.136.186.054.292.19.265.326Zm1.3.108c0 .136-.16.245-.345.245-.186 0-.345-.109-.345-.245s.16-.244.345-.244c.185 0 .345.108.345.244Zm1.22-.217c.026.136-.107.272-.292.299-.186.027-.345-.054-.372-.19-.026-.136.106-.272.292-.3.186-.026.345.055.371.191Z' fill='%23A2A5B5'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat;
+}
+
+/*Discord navbar logo styles below*/
+
+html[data-theme="dark"] .navbar-github-link:before {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0ZM18.5703 9.86147C19.8573 10.055 21.0883 10.393 22.2361 10.8518C22.2461 10.8555 22.2546 10.8617 22.2596 10.8704C24.2934 13.4759 25.2979 16.415 24.9223 19.7986C24.9209 19.8129 24.9124 19.826 24.8989 19.8347C23.3585 20.82 21.8663 21.4181 20.3947 21.8146C20.3713 21.8208 20.3457 21.8134 20.3315 21.7959C19.9915 21.3839 19.6827 20.9494 19.4122 20.4932C19.3966 20.4664 19.4108 20.4341 19.4428 20.4235C19.9333 20.2623 20.3997 20.0693 20.8483 19.8409C20.8838 19.8228 20.8859 19.7786 20.8533 19.7575C20.7582 19.6959 20.6638 19.6311 20.5736 19.5664C20.5566 19.5546 20.5338 19.5521 20.5147 19.5602C17.602 20.7322 14.4111 20.7322 11.4637 19.5602C11.4445 19.5527 11.4218 19.5552 11.4055 19.567C11.3153 19.6317 11.2209 19.6959 11.1265 19.7575C11.0938 19.7786 11.0967 19.8228 11.1322 19.8409C11.5808 20.065 12.0472 20.2623 12.537 20.4241C12.569 20.4347 12.5839 20.4664 12.5682 20.4932C12.3035 20.9501 11.9947 21.3845 11.6483 21.7966C11.6333 21.8134 11.6085 21.8208 11.5851 21.8146C10.1206 21.4181 8.62841 20.82 7.08796 19.8347C7.07519 19.826 7.06596 19.8123 7.06454 19.7979C6.75077 16.8713 7.39037 13.9079 9.72519 10.8698C9.73084 10.8617 9.73937 10.8555 9.74931 10.8518C10.8979 10.3924 12.1288 10.0544 13.4151 9.86147C13.4386 9.85836 13.462 9.86769 13.4741 9.88574C13.6331 10.131 13.8148 10.4453 13.9376 10.7024C15.2935 10.5219 16.6707 10.5219 18.0549 10.7024C18.1777 10.4509 18.3531 10.131 18.5114 9.88574C18.5235 9.86707 18.5469 9.85773 18.5703 9.86147ZM11.3898 16.435C11.3898 17.3064 12.121 18.0159 13.0084 18.0159C13.9099 18.0159 14.6269 17.3064 14.6269 16.435C14.6411 15.5698 13.917 14.854 13.0084 14.854C12.1068 14.854 11.3898 15.5635 11.3898 16.435ZM17.3742 16.435C17.3742 17.3064 18.1053 18.0159 18.9927 18.0159C19.9013 18.0159 20.6112 17.3064 20.6112 16.435C20.6254 15.5698 19.9013 14.854 18.9927 14.854C18.0911 14.854 17.3742 15.5635 17.3742 16.435Z' fill='%23A2A5B5'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+@media (max-width: 1059px) {
+  .navbar-discord-link {
+    display: none;
+  }
+}
+
+.navbar-discord-link:hover {
+  opacity: 0.5;
+}
+
+.navbar-discord-link {
+  opacity: 1;
+}
+
+.navbar-discord-link:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0ZM18.5703 9.86147C19.8573 10.055 21.0883 10.393 22.2361 10.8518C22.2461 10.8555 22.2546 10.8617 22.2596 10.8704C24.2934 13.4759 25.2979 16.415 24.9223 19.7986C24.9209 19.8129 24.9124 19.826 24.8989 19.8347C23.3585 20.82 21.8663 21.4181 20.3947 21.8146C20.3713 21.8208 20.3457 21.8134 20.3315 21.7959C19.9915 21.3839 19.6827 20.9494 19.4122 20.4932C19.3966 20.4664 19.4108 20.4341 19.4428 20.4235C19.9333 20.2623 20.3997 20.0693 20.8483 19.8409C20.8838 19.8228 20.8859 19.7786 20.8533 19.7575C20.7582 19.6959 20.6638 19.6311 20.5736 19.5664C20.5566 19.5546 20.5338 19.5521 20.5147 19.5602C17.602 20.7322 14.4111 20.7322 11.4637 19.5602C11.4445 19.5527 11.4218 19.5552 11.4055 19.567C11.3153 19.6317 11.2209 19.6959 11.1265 19.7575C11.0938 19.7786 11.0967 19.8228 11.1322 19.8409C11.5808 20.065 12.0472 20.2623 12.537 20.4241C12.569 20.4347 12.5839 20.4664 12.5682 20.4932C12.3035 20.9501 11.9947 21.3845 11.6483 21.7966C11.6333 21.8134 11.6085 21.8208 11.5851 21.8146C10.1206 21.4181 8.62841 20.82 7.08796 19.8347C7.07519 19.826 7.06596 19.8123 7.06454 19.7979C6.75077 16.8713 7.39037 13.9079 9.72519 10.8698C9.73084 10.8617 9.73937 10.8555 9.74931 10.8518C10.8979 10.3924 12.1288 10.0544 13.4151 9.86147C13.4386 9.85836 13.462 9.86769 13.4741 9.88574C13.6331 10.131 13.8148 10.4453 13.9376 10.7024C15.2935 10.5219 16.6707 10.5219 18.0549 10.7024C18.1777 10.4509 18.3531 10.131 18.5114 9.88574C18.5235 9.86707 18.5469 9.85773 18.5703 9.86147ZM11.3898 16.435C11.3898 17.3064 12.121 18.0159 13.0084 18.0159C13.9099 18.0159 14.6269 17.3064 14.6269 16.435C14.6411 15.5698 13.917 14.854 13.0084 14.854C12.1068 14.854 11.3898 15.5635 11.3898 16.435ZM17.3742 16.435C17.3742 17.3064 18.1053 18.0159 18.9927 18.0159C19.9013 18.0159 20.6112 17.3064 20.6112 16.435C20.6254 15.5698 19.9013 14.854 18.9927 14.854C18.0911 14.854 17.3742 15.5635 17.3742 16.435Z' fill='%23A2A5B5'/%3E%3C/svg%3E");
 }

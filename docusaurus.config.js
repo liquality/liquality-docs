@@ -112,7 +112,7 @@ const config = {
           },
           {
             href: "/functions/sdk",
-            label: "SDK",
+            label: "Wallet SDK",
             position: "left",
           },
           {
@@ -121,9 +121,33 @@ const config = {
             position: "left",
           },
           {
+            to: "https://www.npmjs.com/package/@liquality/wallet",
+            label: "Get Started",
+            position: "left",
+            className: "dark navbarBtn",
+          },
+          {
+            href: "https://liquality.io/",
+            label: "Website",
+            position: "right",
+          },
+          /*    {
             href: "https://github.com/Liquality",
             label: "GitHub",
             position: "right",
+          }, */
+          {
+            position: "right",
+            href: "https://github.com/Liquality/wallet-api",
+            className: "navbar-discord-link",
+            "aria-label": "GitHub repository",
+          },
+
+          {
+            position: "right",
+            href: "https://github.com/Liquality/wallet-api",
+            className: "navbar-github-link",
+            "aria-label": "GitHub repository",
           },
         ],
       },

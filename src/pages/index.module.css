@@ -3,9 +3,9 @@
  * and scoped locally.
  */
 
- body{
-   font-family: 'Montserrat';
- }
+body {
+  font-family: "Montserrat";
+}
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

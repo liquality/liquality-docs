@@ -131,22 +131,16 @@ const config = {
             label: "Website",
             position: "right",
           },
-          /*    {
-            href: "https://github.com/Liquality",
-            label: "GitHub",
-            position: "right",
-          }, */
-          {
-            position: "right",
-            href: "https://github.com/Liquality/wallet-api",
-            className: "navbar-discord-link",
-            "aria-label": "GitHub repository",
-          },
-
           {
             position: "right",
             href: "https://github.com/Liquality/wallet-api",
             className: "navbar-github-link",
+            "aria-label": "GitHub repository",
+          },
+          {
+            position: "right",
+            href: "https://discord.gg/7fskw52Y",
+            className: "navbar-discord-link",
             "aria-label": "GitHub repository",
           },
         ],

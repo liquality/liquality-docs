@@ -52,7 +52,7 @@ const listToLoop = [
         Create <br /> & Auth
       </p>
     ),
-    href: "/functions/auth",
+    href: "/auth",
   },
   {
     title: (
@@ -60,7 +60,7 @@ const listToLoop = [
         Tokens & <br /> Balances
       </p>
     ),
-    href: "/functions/tokens",
+    href: "/tokens",
   },
   {
     title: (
@@ -68,7 +68,7 @@ const listToLoop = [
         Fees and Price <br /> Aggregation
       </p>
     ),
-    href: "/functions/oraclefees",
+    href: "/swap",
   },
   {
     title: (
@@ -76,7 +76,7 @@ const listToLoop = [
         Collectibles <br /> & NFTs
       </p>
     ),
-    href: "/functions/collectibles",
+    href: "/collectibles",
   },
 ];
 

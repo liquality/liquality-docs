@@ -85,7 +85,7 @@ const config = {
             label: "Introduction",
           },
           {
-            href: "/functions/sdk",
+            href: "/sdk",
             label: "Wallet SDK",
             position: "left",
           },

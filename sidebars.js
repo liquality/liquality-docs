@@ -25,27 +25,27 @@ module.exports = {
       items: [
         {
           type: "doc",
-          id: "functions/sdk",
+          id: "sdk/sdk",
         },
         {
           type: "doc",
-          id: "functions/initialization",
+          id: "sdk/initialization",
         },
         {
           type: "doc",
-          id: "functions/auth",
+          id: "sdk/auth",
         },
         {
           type: "doc",
-          id: "functions/tokens",
+          id: "sdk/tokens",
         },
         {
           type: "doc",
-          id: "functions/oraclefees",
+          id: "sdk/swap",
         },
         {
           type: "doc",
-          id: "functions/collectibles",
+          id: "sdk/collectibles",
         },
       ],
     },

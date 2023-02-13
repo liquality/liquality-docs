@@ -92,21 +92,6 @@ Parameters:
 
 Return values: A string containing the transaction hash (id)
 
-## Update Balances
-
-The update of the balance(s) is triggered by
-loading,
-automatic intervals, or
-if initiated by user.
-
-```javascript
-await updateBalances({
-  network: activeNetwork,
-  walletId: activeWalletId,
-  accountIds,
-});
-```
-
 ## Receive token(s)
 
 Based on the account address/WalletID (alternatively unstoppable domains) the user is able to transfer tokens/funds into the wallet.

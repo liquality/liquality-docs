@@ -4,17 +4,17 @@ sidebar_position: 2
 
 # Collectibles & NFTs
 
-The Liquality NFT API can manage collections of standardized NFTs (ERC-721, and ERC-1155) on multiple chains (atm: Ethereum, Polygon, Solana, and Arbitrum).
+The Liquality NFT functions can manage collections of standardized NFTs (ERC-721, and ERC-1155) on multiple chains evm chains (atm: Ethereum, Polygon, and Arbitrum).
 
 The user gets easy access to NFTs and is able to send, receive, and check stats.
 
-Data sources are delivered by providers (Moralis: Ethereum, Polygon, Solana; Covalent 2: Arbitrum). The data provider will deliver the image (otherwise placeholder), NFT name, NFT description, token ID, creator, creator fee, locked, collection description, account address, asset contract, token standard, and the number of copies owned if ERC-1155 is available.
+Data sources are delivered by providers (Moralis: Ethereum, Polygon: Covalent 2: Arbitrum). The data provider will deliver the image (otherwise placeholder), NFT name, NFT description, token ID, creator, creator fee, locked, collection description, account address, asset contract, token standard, and the number of copies owned if ERC-1155 is available.
 
 ---
 
 ## Receive NFTs
 
-The user will automatically receive the NFTs by injection in regard to the account address provided and then shown in the generalized NFT area (regardless of account), or in the account's first position. The detection of the NFTs happens automatically.
+The user will automatically receive the NFTs by injection in regard to the account address provided (regardless of account). The detection of the NFTs happens automatically.
 
 ## View NFTs from specific address and chain
 
@@ -96,74 +96,102 @@ Users can send a single NFT (or copy) to another address with enough funds to co
 Once the tx is initiated the progress will be tracked (pending vs. completed) and shown to the user with an activity log as well tx details.
 :::
 
-## View NFTs by account
+## Create ERC1155 Collection
 
-```javascript
-wallet.getters.accountNftCollections(accountId);
+To create an ERC1155 NFT collection, you can call the following function:
+
+```typescript
+await createERC1155Collection(
+    { uri, creator }: CreateERC1155CollectionRequest,
+    chainId: number, pk: string
+  ): Promise<string>
 ```
 
-## Get Marketplace Name
+Paramters:
 
-Every NFT is in correlation with a marketplace and can be linked to (OpenSea: Ethereum, Polygon, Stratos: Arbitrum, MagicEden: Solana).
+| Name    | Type   | Description                                      |
+| ------- | ------ | ------------------------------------------------ |
+| uri     | string | image uri                                        |
+| creator | string | creator address                                  |
+| chainId | number | which chain you want to create the collection in |
+| pk      | string | users private key to sign transaction            |
 
-```javascript
-getMarketplaceName(asset: Asset, network: Network)
+Returns a string containing the transaction hash (id).
+
+## Create ERC721 Collection
+
+To create an ERC721 NFT collection, you can call the following function:
+
+```typescript
+  await createERC721Collection(
+    { tokenName, tokenSymbol, creator }: CreateERC721CollectionRequest,
+    chainId: number, pk: string
+  ): Promise<string>
 ```
 
-Return values:
+Paramters:
 
-| Name | Type   | Description          |
-| ---- | ------ | -------------------- |
-| name | string | Nft marketplace name |
+| Name        | Type   | Description                                      |
+| ----------- | ------ | ------------------------------------------------ |
+| tokenName   | string | name of token                                    |
+| tokenSymbol | string | token symbol                                     |
+| creator     | string | creator address                                  |
+| chainId     | number | which chain you want to create the collection in |
+| pk          | string | users private key to sign transaction            |
 
-## Get NFT Transfer Link
+Returns a string containing the transaction hash (id).
 
-```javascript
-export const getNftTransferLink = (asset: Asset, network: Network, tokenId: string, contract_address: string)
+## Mint NFT
 
+# Mint ERC721 Token
+
+To mint a ERC721 token (NFT) you can call the following function:
+
+```typescript
+ await mintERC721Token(
+    { contractAddress, owner, recipient, uri }: MintERC721Request,
+    chainId: number, pk: string
+  ): Promise<string>
 ```
 
-Return values:
+Paramters:
 
-| Name | Type   | Description                     |
-| ---- | ------ | ------------------------------- |
-| link | string | Nft transfer link (marketplace) |
+| Name            | Type   | Description                                                 |
+| --------------- | ------ | ----------------------------------------------------------- |
+| contractAddress | string | the address of the contract you provide                     |
+| owner           | string | the contract owner who has the right to mint                |
+| recipient       | string | wallet address of who will recieve the freshly minted token |
+| uri             | string | image uri                                                   |
+| chainId         | number | which chain you want to create the collection in            |
+| pk              | string | users private key to sign transaction                       |
 
-## Mark as Favourite
+Returns a string containing the transaction hash (id).
 
-An NFT can be marked as a favorite by a user/wallet, and that attribute is added to the NFT.
+# Mint ERC1155 Token
 
-```javascript
-await toggleNFTStarred({
-  network: activeNetwork,
-  walletId: activeWalletId,
-  accountId: nftAsset.accountId,
-  nft: nftAsset,
-});
+To mint a ERC1155 token (NFT) you can call the following function:
+
+```typescript
+await mintERC1155Token(
+    { contractAddress, owner, recipient, id, amount }: MintERC1155Request,
+    chainId: number, pk: string): Promise<string>
 ```
 
-## Sort by favorite NFT within a collection
+Paramters:
 
-:::info
-Marked as favorite NFTs will be placed on top of the collection, so the user can have the favorites faster in sight.
-:::
+| Name            | Type   | Description                                                 |
+| --------------- | ------ | ----------------------------------------------------------- |
+| contractAddress | string | the address of the contract you provide                     |
+| owner           | string | the contract owner who has the right to mint                |
+| recipient       | string | wallet address of who will recieve the freshly minted token |
+| id              | string | wallet give your freshly minted NFT an id                   |
+| amount          | number | amount of mints                                             |
+| uri             | string | image uri                                                   |
+| chainId         | number | which chain you want to create the collection in            |
+| pk              | string | users private key to sign transaction                       |
 
-## Get NFT analytics /soon
-
-(coming soon)
-
-## Show collection/list of favorite NFTs /soon
-
-(coming soon)
+Returns a string containing the transaction hash (id).
 
 ## Selling NFTs /soon
-
-(coming soon)
-
-## Minting NFTs /soon
-
-Note: minted NFTs will have a URI (uniform ressource identifier), attributes are not in particular considered and will be mainly defined by design partners
-
-TBD other cases like create NFT from provided asset, create user-generated NFT, list minted NFT, claim minted NFT, target-group related minted NFT
 
 (coming soon)

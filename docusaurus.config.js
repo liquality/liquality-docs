@@ -95,7 +95,7 @@ const config = {
             position: "left",
           },
           {
-            to: "https://www.npmjs.com/package/@liquality/wallet",
+            to: "https://www.npmjs.com/package/@liquality/wallet-sdk",
             label: "Get Started",
             position: "left",
             className: "dark navbarBtn",

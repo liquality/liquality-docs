@@ -20,6 +20,52 @@ npm install @liquality/wallet-sdk
 
 ---
 
+## Setup API keys
+
+Liquality SDK relies on API keys from different providers we use to fetch blockchain data.
+Before you can utilize all of the different functions Liquality SDK has to offer, you should export the `sdk.setup()`function which you can easily use in all of your files and components.
+
+Example of a file where you export the setup function
+
+```typescript
+import { sdk } from "@liquality/wallet-sdk";
+
+export function setupSDK() {
+    sdk.setup({
+        alchemyApiKey:'YOUR_API_KEY_HERE',
+        etherscanApiKey:'YOUR_API_KEY_HERE',,
+        infuraProjectId:'-',
+        pocketNetworkApplicationID:'-',
+        quorum:1,
+        slowGasPriceMultiplier:1,
+        averageGasPriceMultiplier:1.5,
+        fastGasPriceMultiplier:2,
+        gasLimitMargin:2000
+    });
+}
+```
+
+Example of how to use it in a React component
+
+```typescript
+import { setupSDK } from "../setupSDK";
+import { NftService } from "@liquality/wallet-sdk";
+import React, { useState } from "react";
+
+export default function Collectibles() {
+  setupSDK();
+  const [nfts, setNfts] = useState([]);
+  const fetchNfts = async (address: string, chainId: string) => {
+    const nfts: any = await NftService.getNfts(address, +chainId);
+    console.log(JSON.stringify(nfts));
+    setNfts(nfts);
+  }...
+```
+
+:::info
+The `setup` function is only needed for some of the SDK functions.
+:::
+
 ## Service Worker
 
 - The seamless login experience with social single-sign-on is dependent on the service worker which need to be registered in the project.
@@ -32,6 +78,10 @@ For instance, if the baseUrl is set to `http://localhost:3000/serviceworker`, th
 will be redirected to the `http://localhost:3000/serviceworker/redirect` page after logging in,
 where the service worker will capture the results and send them back to the original window where
 the login was initiated.
+
+:::info
+The service worker setup is only needed for the create and login wallet functions of the SDK.
+:::
 
 ### Service Worker Setup
 

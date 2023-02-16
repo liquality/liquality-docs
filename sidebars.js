@@ -21,6 +21,7 @@ module.exports = {
 
     {
       type: "category",
+      collapsed: false,
       label: "Wallet SDK",
       items: [
         {
@@ -79,6 +80,13 @@ module.exports = {
       type: "link",
       label: "Report a Bug", // The link label
       href: "https://github.com/liquality/wallet-api/issues", // The external URL
+      className: "bugReport",
+    },
+
+    {
+      type: "link",
+      label: "Contribute to Docs", // The link label
+      href: "https://github.com/liquality/liquality-docs", // The external URL
       className: "bugReport",
     },
 

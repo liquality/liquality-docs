@@ -71,7 +71,7 @@ module.exports = {
     {
       type: "html",
       value:
-        "<hr style='background-color:#e4aeff'/><strong style='color: #e4aeff'>Additional Reading</strong>",
+        "<hr style='background-color:#e4aeff'/><strong style='color: #e4aeff'>Additional</strong>",
       className: "sidebar-title",
       defaultStyle: true,
     },

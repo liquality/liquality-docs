@@ -102,7 +102,7 @@ const config = {
           },
           {
             href: "https://liquality.io/",
-            label: "Website",
+            label: "liquality.io",
             position: "right",
           },
           {

@@ -90,6 +90,13 @@ module.exports = {
       className: "bugReport",
     },
 
+    {
+      type: "link",
+      label: "ETHDenver Bounties", // The link label
+      href: "https://www.liquality.io/ethdenver", // The external URL
+      className: "bugReport",
+    },
+
     // Shorthand syntax:
   ],
 };

@@ -62,12 +62,12 @@ module.exports = {
       ],
     }, */
 
-    {
+    /*    {
       type: "link",
       label: "Wallet API", // The link label
       href: "/walletapi", // The external URL
     },
-
+ */
     {
       type: "html",
       value:

@@ -300,7 +300,6 @@ export default function HomePage() {
               <p
                 style={{
                   fontFamily: "Montserrat",
-
                   fontStyle: "normal",
                   fontWeight: "500",
                   fontSize: 14,

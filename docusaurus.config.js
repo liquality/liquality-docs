@@ -89,11 +89,11 @@ const config = {
             label: "Wallet SDK",
             position: "left",
           },
-          {
+          /*      {
             href: "/walletapi",
             label: "API",
             position: "left",
-          },
+          }, */
           {
             to: "https://www.npmjs.com/package/@liquality/wallet-sdk",
             label: "Get Started",

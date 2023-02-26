@@ -25,6 +25,19 @@ List all the tokens in the account, together with their following balances
 await listAccountTokens(address: string, chainID: number)
 ```
 
+Example:
+
+```typescript
+//import at top level
+import { TransactionService } from "@liquality/wallet-sdk";
+
+//call function
+const accountTokensList = await TransactionService.listAccountTokens(
+  address,
+  +chainId
+);
+```
+
 Parameters:
 
 | Name    | Type   | Description                   |

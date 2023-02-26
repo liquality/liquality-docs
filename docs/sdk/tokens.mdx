@@ -29,10 +29,10 @@ Example:
 
 ```typescript
 //import at top level
-import { TransactionService } from "@liquality/wallet-sdk";
+import { ERC20Service } from "@liquality/wallet-sdk";
 
 //call function
-const accountTokensList = await TransactionService.listAccountTokens(
+const accountTokensList = await ERC20Service.listAccountTokens(
   address,
   +chainId
 );

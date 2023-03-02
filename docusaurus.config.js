@@ -113,7 +113,7 @@ const config = {
           },
           {
             position: "right",
-            href: "https://discord.gg/7fskw52Y",
+            href: "https://discord.gg/35yAGaQ3gx",
             className: "navbar-discord-link",
             "aria-label": "GitHub repository",
           },

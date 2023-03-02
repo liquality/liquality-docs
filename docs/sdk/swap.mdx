@@ -20,7 +20,7 @@ We currently support cross-chain evm swaps for: Polygon, Ethereum, Avalanche, Ar
 swap(swapRequest: SwapRequest, pkOrSigner: string | JsonRpcSigner)
 ```
 
-The swap() function takes the private key string and an object that we call SwapRequest and it has the following object properties:
+The swap() function takes the private key string or the JsonRpcSigner (if you are using injected provider) and an object that we call SwapRequest and it has the following object properties:
 
 ```typescript
 interface SwapRequest {

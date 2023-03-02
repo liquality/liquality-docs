@@ -17,7 +17,7 @@ Currently our SDK supports the following networks for the swap functionality and
 We currently support cross-chain evm swaps for: Polygon, Ethereum, Avalanche, Arbitrum
 
 ```typescript
-swap(swapRequest: SwapRequest, pk: string)
+swap(swapRequest: SwapRequest, pkOrSigner: string | JsonRpcSigner)
 ```
 
 The swap() function takes the private key string and an object that we call SwapRequest and it has the following object properties:

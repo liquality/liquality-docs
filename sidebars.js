@@ -92,8 +92,8 @@ module.exports = {
 
     {
       type: "link",
-      label: "ETHDenver Bounties", // The link label
-      href: "https://www.liquality.io/ethdenver", // The external URL
+      label: "Virtual Hackathon", // The link label
+      href: "https://www.liquality.io/virtual-hackathon", // The external URL
       className: "bugReport",
     },
 

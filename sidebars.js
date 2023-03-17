@@ -48,6 +48,10 @@ module.exports = {
           type: "doc",
           id: "sdk/collectibles",
         },
+        {
+          type: "doc",
+          id: "sdk/gasless",
+        },
       ],
     },
 

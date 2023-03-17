@@ -17,10 +17,11 @@ Currently our SDK supports the following networks for the swap functionality and
 We currently support cross-chain evm swaps for: Polygon, Ethereum, Avalanche, Arbitrum
 
 ```typescript
-swap(swapRequest: SwapRequest, pkOrSigner: string | JsonRpcSigner)
+swap(swapRequest: SwapRequest, pkOrProvider: string | ExternalProvider, isGasless: boolean)
 ```
 
-The swap() function takes the private key string or the JsonRpcSigner (if you are using injected provider) and an object that we call SwapRequest and it has the following object properties:
+The swap() function takes the private key string or the ExternalProvider (if you are using injected provider this type can be imported from `import { ExternalProvider } from "@ethersproject/providers";`
+) and an object that we call SwapRequest and it has the following object properties:
 
 ```typescript
 interface SwapRequest {

@@ -91,7 +91,8 @@ Transfer token from one wallet to another
 await transfer(
     transferRequest: TransferERC20Request,
     chainId: number,
-    pk: string,
+    pkOrProvider: string | ExternalProvider,
+    isGasless: boolean
   ): Promise<string>
 ```
 

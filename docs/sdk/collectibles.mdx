@@ -84,7 +84,8 @@ export interface Nft {
  await transferNft(
     transferRequest: TransferRequest,
     chainId: number,
-    pk: string,
+    pkOrProvider: string | ExternalProvider,
+    isGasless: boolean
   ): Promise<string>
 ```
 
@@ -126,7 +127,7 @@ To create an ERC1155 NFT collection, you can call the following function:
 ```typescript
 await createERC1155Collection(
     { uri, creator }: CreateERC1155CollectionRequest,
-    chainId: number, pk: string
+    chainId: number, pkOrProvider: string, isGaslessCompliant: boolean
   ): Promise<string>
 ```
 
@@ -148,7 +149,7 @@ To create an ERC721 NFT collection, you can call the following function:
 ```typescript
   await createERC721Collection(
     { tokenName, tokenSymbol, creator }: CreateERC721CollectionRequest,
-    chainId: number, pk: string
+    chainId: number,  pkOrProvider: string | ExternalProvider, isGasless: boolean
   ): Promise<string>
 ```
 
@@ -173,7 +174,7 @@ To mint a ERC721 token (NFT) you can call the following function:
 ```typescript
  await mintERC721Token(
     { contractAddress, owner, recipient, uri }: MintERC721Request,
-    chainId: number, pk: string
+    chainId: number, pkOrProvider: string | ExternalProvider,  isGasless: boolean
   ): Promise<string>
 ```
 
@@ -197,7 +198,7 @@ To mint a ERC1155 token (NFT) you can call the following function:
 ```typescript
 await mintERC1155Token(
     { contractAddress, owner, recipient, id, amount }: MintERC1155Request,
-    chainId: number, pk: string): Promise<string>
+    chainId: number,  pkOrProvider: string | ExternalProvider, isGasless: boolean): Promise<string>
 ```
 
 Parameters:

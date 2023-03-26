@@ -52,7 +52,7 @@ const listToLoop = [
         Create <br /> & Auth
       </p>
     ),
-    href: "/auth",
+    href: "/sdk/auth",
   },
   {
     title: (
@@ -60,7 +60,7 @@ const listToLoop = [
         Tokens & <br /> Balances
       </p>
     ),
-    href: "/tokens",
+    href: "/sdk/tokens",
   },
   {
     title: (
@@ -68,7 +68,7 @@ const listToLoop = [
         Fees and Price <br /> Aggregation
       </p>
     ),
-    href: "/swap",
+    href: "/sdk/swap",
   },
   {
     title: (
@@ -76,7 +76,7 @@ const listToLoop = [
         Collectibles <br /> & NFTs
       </p>
     ),
-    href: "/collectibles",
+    href: "/sdk/collectibles",
   },
 ];
 

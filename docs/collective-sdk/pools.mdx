@@ -1,0 +1,160 @@
+---
+sidebar_position: 1
+---
+
+# Pools
+
+[See source implementation here](https://github.com/liquality/my-collectives-sdk/blob/main/src/pools/index.ts).
+
+With Liquality Collective SDK, you can create and implement pools for specific projects or goals with a clear lifecycle.
+Each collective can have one or many pools associated with it.
+
+### Create a Pool
+
+In order to create a pool, you will have already created a collective and honeypot.
+In order to create a wallet or do wallet interactions, you first have to initiate the tKey instance.
+
+This is done by calling:
+
+```typescript
+public static async createPools(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata, poolParam: createPoolsParam) {}
+```
+
+Where the createPoolParams is defined as
+
+```typescript
+type createPoolsParam = {
+  tokenContracts: string[];
+  honeyPots: string[];
+};
+```
+
+The init() function takes an object that we call directParams and it has the following object properties:
+
+| Name           | Type     | Description                                                 |
+| -------------- | -------- | ----------------------------------------------------------- |
+| tokenContracts | string[] | the NFT token contracts that are assosciated with the pools |
+| honeyPots      | string[] | honeypots that you created for the collective               |
+
+Example:
+
+```typescript
+import * as MyCollectives from "@liquality/my-collectives-sdk";
+
+ async createPools(
+    cAddress: string,
+    cWallet: string,
+    nonceKey: bigint,
+    tokenContracts: string[],
+    honeyPots: string[]
+  ) {
+    this.initSDKConfig();
+    const provider = await this.getProvider();
+    const response = await MyCollectives.Pool.createPools(
+      provider,
+      { address: cAddress, wallet: cWallet, nonceKey },
+      { tokenContracts, honeyPots }
+    );
+    console.log("!!!!! response => createPools for each ", response);
+    return response;
+  }
+
+```
+
+## Mint
+
+### Mint through a pool collective
+
+After you created your pool, you can mint through it and account mints through the collective.
+
+```typescript
+type MintParam = {
+  recipient: string;
+  tokenID: number;
+  amount: bigint;
+  quantity: number;
+  platform: SupportedPlatforms;
+  tokenContract: string;
+  poolAddress: string;
+};
+```
+
+Collective metadata
+
+```typescript
+type CMetadata = {
+  address: string;
+  wallet: string;
+  nonceKey: bigint;
+};
+```
+
+```typescript
+public static async mint(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata, mintParam: MintParam) {}
+```
+
+Example use
+
+```typescript
+const response = await MyCollectives.Pool.mint(
+  provider,
+  { address: cAddress, wallet: cWallet, nonceKey },
+  {
+    recipient: await provider.getSigner().getAddress(),
+    tokenID: tokenId ? Number(tokenId) : generatedTokenId,
+    amount, // amount in WEI bigint
+    quantity,
+    platform,
+    tokenContract,
+    poolAddress,
+  }
+);
+console.log("!!!!! response poolmint => ", response);
+if (response.status === "failed") throw Error("Failed transaction");
+```
+
+## Withdraw rewards
+
+To withdraw rewards from the pool, you first have to have money in the honeypot contract, and sent the rewards to the pool, and distributed the rewards for the participants.
+
+```typescript
+//Send the reward to the poolAddress
+const distributeRewardsResponse = await MyCollectives.Pool.distributeRewards(
+  privateKey,
+  pool.publicAddress
+);
+const response = await MyCollectives.Pool.withdrawRewards(
+  provider,
+  { address: cAddress, wallet: cWallet, nonceKey },
+  poolAddresses,
+  await provider.getSigner().getAddress()
+);
+```
+
+## Helpers
+
+### Helper functions when developing with pools
+
+```typescript
+//getPoolReward from pool contract
+public static async getPoolReward(pool: string) {}
+
+// getTotalContributions from pool contract
+public static async getTotalContributions(pool: string) {}
+
+// getParticipantsCount from pool contract
+public static async getParticipantsCount(pool: string) {}
+
+// Check if pool isActive from pool contract
+public static async isActive(pool: string) {}
+
+// check if pool reward isDistributed from pool contract
+public static async isRewardDistributed(pool: string) {}
+
+// getPoolParticipants from pool contract, and fetch the participantData for each participant
+public static async getPoolParticipants(caller: ethers5.providers.Web3Provider, pool: string) {}
+
+// getParticipation
+public static async getParticipation(pool: string, member: string) {}
+
+```

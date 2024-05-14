@@ -1,0 +1,48 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+
+import TabItem from "@theme/TabItem";
+
+# Initialization
+
+---
+
+## Installation
+
+You can use npm or yarn to install the Liquality SDK
+
+```bash npm2yarn
+npm install @liquality/my-collectives-sdk
+```
+
+---
+
+## Setup API keys
+
+Collective SDK relies on API keys from different providers.
+Before you can utilize all of the different functions Collective SDK has to offer, you should export the `MyCollectives.setConfig()` function which you can easily use in all of your files and components.
+
+Example of a file where you export the setup function
+
+```typescript
+import { Config } from "@liquality/my-collectives-sdk";
+
+  initSDKConfig: function () {
+    return MyCollectives.setConfig({
+      RPC_URL: process.env.VITE_RPC_URL,
+      PIMLICO_API_KEY: process.env.VITE_PIMLICO_API_KEY,
+      BICONOMY_PAYMASTER: process.env.VITE_BICONOMY_PAYMASTER,
+      BICONOMY_BUNDLER_API_KEY: process.env.VITE_BICONOMY_BUNDLER_API_KEY,
+      AA_PROVIDER: MyCollectives.AAProviders.PIMLICO,
+    } as Config);
+  },
+
+
+
+:::info
+The `setConfig()` API keys are optional, depending on whether you want to use AA features.
+:::
+```

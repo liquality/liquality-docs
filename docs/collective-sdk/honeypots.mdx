@@ -1,0 +1,82 @@
+---
+sidebar_position: 7
+---
+
+# Honeypots
+
+[See source implementation here](https://github.com/liquality/my-collectives-sdk/blob/main/src/honeyPots/index.ts).
+
+The Honeypot Contract are where all the rewards are sent to. For example, on Zora mints,
+creators could set the rewards address or a splitter address as the honeypot address. Rewards would automatically be distributed to the honeypot which can later be used for the collective.
+
+:::info Automatic Distribution
+If you do not have automatic rewards distribution in your app or contract, you may want to consider sending the reward to the honeypot manually.
+:::
+
+# Create
+
+### Create a honeypot
+
+```typescript
+    public static async create(caller: ethers5.providers.Web3Provider, salt : ethers.BigNumberish)
+```
+
+# Get
+
+### Get a honeypot
+
+```typescript
+public static async get(caller: ethers5.providers.Web3Provider, salt : ethers.BigNumberish)
+```
+
+Example use of getting and creating a honeypot:
+
+```typescript
+  async createHoneyPot() {
+    this.initSDKConfig();
+    const provider = await this.getProvider();
+    const salt = generateSalt();
+    const createResponse = await MyCollectives.HoneyPot.create(provider, salt);
+    const response = await MyCollectives.HoneyPot.get(provider, salt);
+    console.log("!!!!! response honey pot address => ", response);
+    return response;
+  },
+```
+
+# Top Contributor
+
+### Set top contributor for a honeypot/collective
+
+```typescript
+public static async setTopContributor(privateKey: string, honeyPotAddress: string, topContributor: string): Promise<TransactionResponse>
+```
+
+Example usage:
+
+```typescript
+const honeyPotHasBalance = await RewardsService.getHoneyPotContractBalance(pool.honeyPotAddress);
+if (honeyPotHasBalance.balanceInEth || 0) > 0) {
+  const setTopContributorResponse =
+    await MyCollectives.HoneyPot.setTopContributor(
+      privateKey,
+      pool.honeyPotAddress,
+      topContributorAddress.address
+    );
+}
+```
+
+### Get top contributor
+
+Can be used to get top contributor or check if top contributor has been set
+
+```typescript
+public static async getTopContributor(honeyPotAddress: string)
+```
+
+# Send Reward
+
+### Send the reward to the honeypot
+
+```typescript
+public static async sendReward(privateKey: string,  honeyPotAddress: string)
+```

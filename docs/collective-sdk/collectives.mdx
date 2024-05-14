@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+displayed_sidebar: mySidebar
+---
+
+# Collectives
+
+[See source implementation here](https://github.com/liquality/my-collectives-sdk/blob/main/src/collectives/index.ts).
+
+Establishing a collective hub within the realm of web3, our initiative serves as a centralized space for groups to unite around a shared goal, without the need for a multisig requirement and waiting for approvals. The primary objective is to empower individuals within a group to collectively maintain a unified on-chain identity while retaining the autonomy to take independent actions, without relying on multisig structures for decision-making.
+
+## Create
+
+### Create a collective
+
+```typescript
+public static async create(caller: ethers5.providers.Web3Provider, poolParam: createPoolsParam, salt : ethers.BigNumberish) {}
+```
+
+## Join
+
+### Join a collective
+
+```typescript
+public static async join(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata, JoinParam:JoinCollectiveParam) {}
+```
+
+## Leave
+
+### Leave a collective
+
+```typescript
+public static async leave(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata) {}
+```
+
+## isMember
+
+### Check if an address belongs to a collective
+
+```typescript
+public static async isMember(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata, member: string) {}
+```
+
+## Refund deposit
+
+### How to refund your collective deposit
+
+:::info
+When minting through a collective, users have to deposit some funds to the collective address first. If the second minting transaction fails, there is a refund() function that can be called below to retrieve the lost funds that the user deposited to the collective.
+:::
+
+```typescript
+public static async refund(caller: ethers5.providers.Web3Provider, cMetadata: CMetadata, recipient: string) {}
+```
+
+---

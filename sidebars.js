@@ -55,6 +55,34 @@ module.exports = {
       ],
     },
 
+    {
+      type: "category",
+      collapsed: false,
+      label: "Collective SDK",
+      items: [
+        {
+          type: "doc",
+          id: "collective-sdk/introduction",
+        },
+        {
+          type: "doc",
+          id: "collective-sdk/initialization",
+        },
+        {
+          type: "doc",
+          id: "collective-sdk/collectives",
+        },
+        {
+          type: "doc",
+          id: "collective-sdk/honeypots",
+        },
+        {
+          type: "doc",
+          id: "collective-sdk/pools",
+        },
+      ],
+    },
+
     /*   {
       type: "category",
       label: "Examples",
@@ -66,12 +94,12 @@ module.exports = {
       ],
     }, */
 
-    /*    {
+    {
       type: "link",
       label: "Wallet API", // The link label
       href: "/walletapi", // The external URL
     },
- */
+
     {
       type: "html",
       value:

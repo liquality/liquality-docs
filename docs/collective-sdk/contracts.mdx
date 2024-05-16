@@ -1,0 +1,111 @@
+---
+sidebar_position: 2
+displayed_sidebar: mySidebar
+---
+
+# Contracts
+
+[See source implementation here](https://github.com/liquality/Collective-Protocol).
+
+## Collective Contract
+
+This contract is the main entry point for the Collective. It implements core collective functionalities and also includes a minimal AA (Account Abstraction) account.
+
+### Function Specifications
+
+`initialize(address theInitiator, address theOperator, address theFactory)`
+Initializes the contract with the following parameters:
+
+`theInitiator`: The address of the initiator (creator) of the Collective.
+`theOperator`: The address of the operator (manager) of the Collective.
+`theFactory`: The address of the factory contract that created this Collective.
+
+This function sets the initial values for operator, initiator, collectiveFactory, and adds the initiator as the first member of the Collective.
+
+`setWallet(address theWallet)`
+Sets the address of the Collective's wallet (cWallet) to the provided theWallet address. This function can only be called by the collectiveFactory contract.
+
+`joinCollective(bytes calldata _inviteSig, bytes16 _inviteId)`
+Allows a new member to join the Collective by providing a valid invitation signature (\_inviteSig) and invitation ID (\_inviteId). The function verifies the signature and the signer's membership before adding the new member to the Collective.
+
+`leaveCollective()`
+Allows a member to leave the Collective by removing their membership.
+
+`removeMember(address _member)`
+Allows the initiator to remove a member from the Collective.
+
+`createPools(address[] calldata _tokenContracts, address[] calldata _honeyPots)`
+Allows a member to create new pools by providing an array of token contract addresses (\_tokenContracts) and an array of corresponding "honeyPot" addresses (\_honeyPots). The function deploys a new Pool contract for each pair of token contract and honeyPot address, and whitelists the necessary addresses in the Collective's wallet.
+
+`recordPoolMint(address _pool, address _participant, uint256 _tokenID, uint256 _quantity, uint256 _amountPaid)`
+Records a mint event in the specified \_pool for the given \_participant, \_tokenID, \_quantity, and \_amountPaid. This function can only be called by the Collective's wallet (cWallet).
+
+`receivePoolReward(address _honeyPot)`
+Receives a reward for the pool associated with the provided \_honeyPot address. The function forwards the received ETH to the corresponding pool contract and emits a RewardForwarded event.
+
+`renounceOperator()`
+Allows the current operator to renounce their role as the operator of the Collective.
+
+`whitelistTargets(address[] calldata _targets)`
+Allows the operator to whitelist an array of target addresses in the Collective's wallet.
+
+`blacklistTargets(address[] calldata _targets)`
+Allows the operator to blacklist an array of target addresses in the Collective's wallet.
+Internal Functions
+
+`_requireFromMembers(address caller)`:
+Internal function to check if the caller is a member of the Collective.
+
+`_requireFromInitiator()`:
+Internal function to check if the caller is the initiator of the Collective.
+
+`_requireFromAuthorizedOperator()`:
+Internal function to check if the caller is the authorized operator of the Collective.
+
+`getCaller(): `
+Internal function to retrieve the actual caller address, handling the case where the call is made through the Collective's wallet (cWallet).
+
+`recoverSigner(bytes calldata _inviteSig, bytes16 _inviteId)`
+Internal function to recover the signer address from the provided invitation signature (\_inviteSig) and invitation ID (\_inviteId).
+
+### Factory addresses and Supported Chains
+
+If you want to create your own collective, you can deploy them using one of the following factory addresses
+
+```typescript
+[SupportedChains.GOERLI]: {
+    collectiveFactory: '0xdA23889B4D12dE56b5C1E118Ae63F099b03a9086',
+    honeyPotFactory: '0xce3795B42857bE44cF8a384c8b50246FB7CaC691',
+
+  },
+  [SupportedChains.POLYGON]: {
+    collectiveFactory: '0x9E4440EDFc8AebB30A5501F7a55EDe296BC2fb38',
+    honeyPotFactory: '0xF99E8F24BAD50CE6b0098205adcD6cD01e66AC4F',
+
+  },
+  [SupportedChains.ARBITRUM]: {
+    collectiveFactory: '0xCfC03cA81380338703860238d0d6caD552232877',
+    honeyPotFactory: '0xc2b5189c3D5be89147780591A92a374c7d69D3D3',
+
+  },
+  [SupportedChains.BASE]: {
+    collectiveFactory: '0xc2b5189c3D5be89147780591A92a374c7d69D3D3',
+    honeyPotFactory: '0x6fF619e8856F737d58cAf03871Cb3637C6Ed3308',
+
+  },
+  [SupportedChains.OPTIMISM]: {
+    collectiveFactory: '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789',
+    honeyPotFactory: '0x00F58322E0c66BFFb613DbC2D38b5275A0Fc7d2f',
+
+  },
+  [SupportedChains.ZORA]: {
+    collectiveFactory: '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789',
+    honeyPotFactory: '0x00F58322E0c66BFFb613DbC2D38b5275A0Fc7d2f',
+
+  },
+  [SupportedChains.SEPOLIA]: {
+    collectiveFactory: '0x6f8892FBeAc884Bd3674Eeeafc7A059B70A75430',
+    honeyPotFactory: '0x00F58322E0c66BFFb613DbC2D38b5275A0Fc7d2f',
+
+  }
+```

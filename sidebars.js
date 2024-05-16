@@ -80,6 +80,10 @@ module.exports = {
           type: "doc",
           id: "collective-sdk/pools",
         },
+        {
+          type: "doc",
+          id: "collective-sdk/contracts",
+        },
       ],
     },
 

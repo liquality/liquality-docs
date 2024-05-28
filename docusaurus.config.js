@@ -79,14 +79,13 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Introduction",
-          },
-          {
             href: "/sdk",
             label: "Wallet SDK",
+            position: "left",
+          },
+          {
+            href: "/collective-sdk/introduction",
+            label: "Collective SDK",
             position: "left",
           },
           /*      {

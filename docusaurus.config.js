@@ -73,6 +73,8 @@ const config = {
       navbar: {
         title: "",
         logo: {
+          href: "https://liquality.io/",
+
           alt: "Liquality Logo",
           src: "img/logo_light.svg",
           srcDark: "img/logo_dark.svg",

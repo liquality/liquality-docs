@@ -114,9 +114,9 @@ const config = {
           },
           {
             position: "right",
-            href: "https://discord.gg/35yAGaQ3gx",
+            href: "https://t.me/liquality",
             className: "navbar-discord-link",
-            "aria-label": "GitHub repository",
+            "aria-label": "telegram",
           },
         ],
       },

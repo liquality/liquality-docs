@@ -126,13 +126,6 @@ module.exports = {
       className: "bugReport",
     },
 
-    {
-      type: "link",
-      label: "Virtual Hackathon", // The link label
-      href: "https://www.liquality.io/virtual-hackathon", // The external URL
-      className: "bugReport",
-    },
-
     // Shorthand syntax:
   ],
 };

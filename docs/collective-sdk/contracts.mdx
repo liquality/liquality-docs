@@ -109,3 +109,155 @@ If you want to create your own collective, you can deploy them using one of the 
 
   }
 ```
+
+## CWallet Contract
+
+The CWallet contract is an advanced wallet implementation with features such as single signer operations, support for account abstraction, whitelisted target addresses, and reward handling. It integrates with the Collective and EntryPoint contracts to provide flexible and secure wallet operations, and it is the gateway to external contract / protocol interaction for the collective, this is how the collective maintains a single identity.
+
+## HoneyPot
+
+The HoneyPot contract is an upgradeable contract designed to handle reward distribution for any reward mechanism the collective chooses to run. It includes mechanisms for setting the top contributor / reward winner, receiving rewards, and sending rewards to the top contributor. The contract utilizes OpenZeppelin's upgradeable and security libraries to ensure safe and efficient operations.
+
+## Pool
+
+The Pool smart contract is designed to manage contributions, rewards distribution, and fund withdrawals for a collective. The contract includes functionality for recording contributions, distributing rewards based on contributions, and managing the pool's state. It utilizes OpenZeppelin's Pausable and ReentrancyGuard for added security and flexibility.
+
+#### And the main entry points for usage of the Collective protocol are as listed below :
+
+- CollectiveFactory
+- EscrowFactory
+- HoneyPotFactory
+
+These contracts are where to get started, if you're lookign to get started with the Collective Protocol
+
+## Collective Factory
+
+The CollectiveFactory contract is responsible for creating and deploying Collective and CWallet (Collective Wallet) contracts using the ERC1967 proxy pattern and the Create2 openzeppelin library. It provides functions to create and calculate the addresses of Collective and CWallet contracts based on the provided parameters.
+
+### Usage
+
+To use the CollectiveFactory contract, you need to deploy it first, passing the IEntryPoint contract address as a constructor argument. After deployment, developers can interact with the contract's functions to create and manage Collective and CWallet contracts.
+
+Here's an example of how to create a Collective and CWallet contract using the CollectiveFactory:
+
+```typescript
+// Import the necessary contracts and interfaces
+import "./CollectiveFactory.sol";
+
+// Deploy the CollectiveFactory contract
+CollectiveFactory collectiveFactory = new CollectiveFactory(entryPoint);
+
+// Set the parameters for creating a Collective and CWallet
+address initiator = ...; // Address of the initiator account
+address operator = ...; // Address of the operator account, this is the person setting up the collective
+uint256 salt = ...; // A unique salt value
+
+// Create the Collective contract
+collectiveFactory.createCollective(initiator, operator, salt);
+
+// Get the address of the created Collective contract
+address collectiveAddress = collectiveFactory.getCollective(initiator, operator, salt);
+
+// Create the CWallet contract
+address cWalletAddress = collectiveFactory.createWallet(initiator, operator, salt);
+```
+
+## EscrowFactory
+
+This is the main factory contract that manages the deployment and upgrade of `HoneyPot` escrow contracts using Transparent Proxies.The HoneyPot contract represents the escrow logic. It needs to be initialized with the owner contract address and the factory owner address.
+
+### Usage
+
+```typescript
+const { ethers, upgrades } = require("hardhat");
+
+async function main() {
+  // Deploy EscrowFactory
+  const EscrowFactory = await ethers.getContractFactory("EscrowFactory");
+  const escrowFactory = await upgrades.deployProxy(EscrowFactory, [], {
+    initializer: "initialize",
+  });
+  await escrowFactory.deployed();
+  console.log("EscrowFactory deployed to:", escrowFactory.address);
+
+  // Create an escrow by sending funds
+  const [deployer] = await ethers.getSigners();
+  const tx = await deployer.sendTransaction({
+    to: escrowFactory.address,
+    value: ethers.utils.parseEther("1.0"), // Amount to send
+  });
+  await tx.wait();
+  console.log("Funds sent and escrow created.");
+
+  // Retrieve escrow address
+  const escrowAddress = await escrowFactory.getEscrow(deployer.address);
+  console.log("Escrow Address:", escrowAddress);
+
+  // Deploy new implementation
+  const NewHoneyPot = await ethers.getContractFactory("NewHoneyPot");
+  const newImplementation = await NewHoneyPot.deploy();
+  await newImplementation.deployed();
+  console.log("New implementation deployed to:", newImplementation.address);
+
+  // Upgrade escrow to new implementation
+  const data = newImplementation.interface.encodeFunctionData("initialize", [
+    deployer.address,
+    deployer.address,
+  ]);
+  await escrowFactory.upgradeEscrowFor(
+    deployer.address,
+    newImplementation.address,
+    data
+  );
+  console.log("Escrow upgraded to new implementation.");
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+Replace EscrowFactory_Address with the actual deployed address of your EscrowFactory contract.
+
+## HoneyPotFactory
+
+The EscrowFactory contract is designed to create and manage escrow contracts. This factory contract uses upgradeable proxies to ensure that the escrow contracts can be upgraded in the future without losing state. This section provides an overview of the contract's functionality, structure, and how to interact with it.
+
+### Usage
+
+```typescript
+const { ethers } = require("hardhat");
+
+async function main() {
+  // Deploy HoneyPotFactory
+  const HoneyPotFactory = await ethers.getContractFactory("HoneyPotFactory");
+  const honeyPotFactory = await HoneyPotFactory.deploy();
+  await honeyPotFactory.deployed();
+  console.log("HoneyPotFactory deployed to:", honeyPotFactory.address);
+
+  // Define operator and salt
+  const operator = "0xYourOperatorAddress";
+  const salt = ethers.utils.id("unique_salt_value"); // Use a unique salt value
+
+  // Create HoneyPot
+  const tx = await honeyPotFactory.createHoneyPot(operator, salt);
+  await tx.wait();
+  console.log("HoneyPot created.");
+
+  // Retrieve HoneyPot address
+  const honeyPotAddress = await honeyPotFactory.getHoneyPot(operator, salt);
+  console.log("HoneyPot Address:", honeyPotAddress);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+Replace HoneyPotFactory_Address and operator_address with the actual deployed address of your HoneyPotFactory contract and the operator address respectively. Use a unique salt value for each HoneyPot you create.

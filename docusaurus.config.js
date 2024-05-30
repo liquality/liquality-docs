@@ -108,7 +108,7 @@ const config = {
           },
           {
             position: "right",
-            href: "https://github.com/Liquality/wallet-sdk",
+            href: "https://github.com/Liquality",
             className: "navbar-github-link",
             "aria-label": "GitHub repository",
           },

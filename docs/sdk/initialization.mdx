@@ -41,7 +41,7 @@ export function setupSDK() {
     averageGasPriceMultiplier: 1.5,
     fastGasPriceMultiplier: 2,
     gasLimitMargin: 2000,
-    gelatoApiKey:"", //needed for gasless transactions
+    gelatoApiKey: "", //needed for gasless transactions
   });
 }
 ```
@@ -422,8 +422,6 @@ self.addEventListener("fetch", function (event) {
 ### Production Environment
 
 If you are hosting your application in production enviornment, you also need to create a environment variable called `PUBLIC_URL` at the web hosting platform you use. See below example of how it would look like in Vercel:
-
-<img src="https://cdn.discordapp.com/attachments/1076177907195588608/1081232890370740335/image.png"></img>
 
 ## Webpack and Dependency Issues
 

@@ -124,7 +124,7 @@ const config = {
         style: "light",
         links: [
           {
-            html: `© 2022, Liquality. All rights reserved.`,
+            html: `© 2024, Liquality. All rights reserved.`,
           },
           {
             label: "Liquality",
